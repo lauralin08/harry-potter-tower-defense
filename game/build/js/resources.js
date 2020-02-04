@@ -80,11 +80,6 @@ game.resources = [
         "src": "data/img/map/default_glass2.png"
     },
     {
-        "name": "doors_item_wood3",
-        "type": "image",
-        "src": "data/img/map/doors_item_wood3.png"
-    },
-    {
         "name": "doors_trapdoor_side2",
         "type": "image",
         "src": "data/img/map/doors_trapdoor_side2.png"
@@ -190,26 +185,6 @@ game.resources = [
         "src": "data/map/Background2.tsx"
     },
     {
-        "name": "brick3",
-        "type": "tsx",
-        "src": "data/map/brick3.tsx"
-    },
-    {
-        "name": "brick4",
-        "type": "tsx",
-        "src": "data/map/brick4.tsx"
-    },
-    {
-        "name": "bricks",
-        "type": "tsx",
-        "src": "data/map/bricks.tsx"
-    },
-    {
-        "name": "bricks2",
-        "type": "tsx",
-        "src": "data/map/bricks2.tsx"
-    },
-    {
         "name": "buildatlas",
         "type": "tsx",
         "src": "data/map/buildatlas.tsx"
@@ -258,11 +233,6 @@ game.resources = [
         "name": "garage2",
         "type": "tsx",
         "src": "data/map/garage2.tsx"
-    },
-    {
-        "name": "garagedoor",
-        "type": "tsx",
-        "src": "data/map/garagedoor.tsx"
     },
     {
         "name": "glass",

@@ -4,8 +4,24 @@ var game = {
 
     // an object where to store game information
     data : {
-        // score
-        score : 0
+	waveNumber: 1,
+	beans: 300,
+	
+	spellLv1Cost: 100,
+	spellLv2Cost: 300,
+	spellLv3Cost: 500,
+
+	lv1Damage: 0,
+	lv2Damage: 5,
+	lv3Damage: 10,
+	
+	lv1UpgradeCost: 50,
+	lv2UpgradeCost: 100,
+	lv3UpgradeCost: 300,
+
+	lv1UpgradeDamage: 0,
+	lv2UpgradeDamage: 5,
+	lv3UpgradeDamage: 10
     },
 
 
