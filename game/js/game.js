@@ -43,11 +43,19 @@ var game = {
 
     // Run on game resources loaded.
     "loaded" : function () {
+        // set the "Menu/Title" Screen Object
+        me.state.set(me.state.MENU, new game.TitleScreen());
+
         // set the "Play/Ingame" Screen Object
         me.state.set(me.state.PLAY, new game.PlayScreen());
 
+        // set a global fading transition for the screen
+        me.state.transition("fade", "#FFFFFF", 250);
+        
         // add our player entity in the entity pool
         me.pool.register("mainPlayer", game.PlayerEntity);
+        me.pool.register("CoinEntity", game.CoinEntity);
+        me.pool.register("EnemyEntity", game.EnemyEntity);
 
         // enable the keyboard
         me.input.bindKey(me.input.KEY.LEFT, 'left');
@@ -57,7 +65,7 @@ var game = {
         me.input.bindKey(me.input.KEY.UP, 'jump', true);
         me.input.bindKey(me.input.KEY.SPACE, 'jump', true);
 
-        // Start the game.
-        me.state.change(me.state.PLAY);
+        // Display the menu title
+        me.state.change(me.state.MENU);
     }
 };
