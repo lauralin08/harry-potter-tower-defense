@@ -165,6 +165,11 @@ game.resources = [
         "src": "data/img/sprite/wheelie_right.png"
     },
     {
+        "name": "PressStart2P",
+        "type": "image",
+        "src": "data/fnt/PressStart2P.png"
+    },
+    {
         "name": "area01",
         "type": "tmx",
         "src": "data/map/area01.tmx"
@@ -273,5 +278,9 @@ game.resources = [
         "name": "windows2",
         "type": "tsx",
         "src": "data/map/windows2.tsx"
+    },
+    {   "name": "PressStart2P",
+        "type": "binary",
+        "src": "data/fnt/PressStart2P.fnt"
     }
 ];
