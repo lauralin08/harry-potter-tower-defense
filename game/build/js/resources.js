@@ -80,6 +80,7 @@ game.resources = [
         "src": "data/img/map/default_glass2.png"
     },
     {
+<<<<<<< HEAD
 <<<<<<< df5a36d70134021bdb107d4697045ac930309987
 =======
 <<<<<<< Updated upstream
@@ -89,6 +90,8 @@ game.resources = [
     },
     {
 >>>>>>> fix map
+=======
+>>>>>>> 56c7a274913638bb108d4818504bf93142deea94
         "name": "doors_trapdoor_side2",
         "type": "image",
         "src": "data/img/map/doors_trapdoor_side2.png"
@@ -109,6 +112,26 @@ game.resources = [
         "name": "hcolors",
         "type": "image",
         "src": "data/img/map/hcolors.png"
+    },
+    {
+        "name": "hcolors1",
+        "type": "image",
+        "src": "data/img/map/hcolors1.png"
+    },
+    {
+        "name": "hcolors2",
+        "type": "image",
+        "src": "data/img/map/hcolors2.png"
+    },
+    {
+        "name": "hcolors3",
+        "type": "image",
+        "src": "data/img/map/hcolors3.png"
+    },
+    {
+        "name": "hcolors4",
+        "type": "image",
+        "src": "data/img/map/hcolors4.png"
     },
     {
         "name": "house_inside",
@@ -174,11 +197,14 @@ game.resources = [
         "name": "PressStart2P",
         "type": "image",
         "src": "data/fnt/PressStart2P.png"
+<<<<<<< HEAD
     },
     {
         "name": "area01",
         "type": "tmx",
         "src": "data/map/area01.tmx"
+=======
+>>>>>>> 56c7a274913638bb108d4818504bf93142deea94
     },
     {
         "name": "PrivetDrive",
@@ -186,9 +212,9 @@ game.resources = [
         "src": "data/map/PrivetDrive.tmx"
     },
     {
-        "name": "area01_level_tiles",
-        "type": "tsx",
-        "src": "data/map/area01_level_tiles.tsx"
+        "name": "PrivetDrive",
+        "type": "tmx",
+        "src": "data/map/PrivetDrive.json"
     },
     {
         "name": "Background2",
@@ -222,34 +248,54 @@ game.resources = [
     },
     {
         "name": "DungeonCrawl_ProjectUtumnoTileset",
+<<<<<<< HEAD
+=======
         "type": "tsx",
         "src": "data/map/DungeonCrawl_ProjectUtumnoTileset.tsx"
     },
     {
-<<<<<<< Updated upstream
-        "name": "garage2",
-        "type": "tsx",
-        "src": "data/map/garage2.tsx"
-    },
-    {
-<<<<<<< df5a36d70134021bdb107d4697045ac930309987
-=======
-        "name": "garagedoor",
-        "type": "tsx",
-        "src": "data/map/garagedoor.tsx"
-    },
-    {
-=======
->>>>>>> Stashed changes
->>>>>>> fix map
         "name": "glass",
+>>>>>>> 56c7a274913638bb108d4818504bf93142deea94
         "type": "tsx",
         "src": "data/map/glass.tsx"
     },
     {
+<<<<<<< HEAD
+<<<<<<< Updated upstream
+        "name": "garage2",
+=======
         "name": "hcolors",
+>>>>>>> 56c7a274913638bb108d4818504bf93142deea94
         "type": "tsx",
         "src": "data/map/hcolors.tsx"
+    },
+    {
+<<<<<<< HEAD
+<<<<<<< df5a36d70134021bdb107d4697045ac930309987
+=======
+        "name": "garagedoor",
+=======
+        "name": "hcolors2",
+>>>>>>> 56c7a274913638bb108d4818504bf93142deea94
+        "type": "tsx",
+        "src": "data/map/hcolors2.tsx"
+    },
+    {
+<<<<<<< HEAD
+=======
+>>>>>>> Stashed changes
+>>>>>>> fix map
+        "name": "glass",
+=======
+        "name": "hcolors3",
+>>>>>>> 56c7a274913638bb108d4818504bf93142deea94
+        "type": "tsx",
+        "src": "data/map/hcolors3.tsx"
+    },
+    {
+        "name": "hcolors4",
+        "type": "tsx",
+        "src": "data/map/hcolors4.tsx"
     },
     {
         "name": "obj_misk_atlas",
@@ -267,6 +313,7 @@ game.resources = [
         "src": "data/map/sun.tsx"
     },
     {
+<<<<<<< HEAD
 <<<<<<< Updated upstream
         "name": "windows",
         "type": "tsx",
@@ -288,5 +335,10 @@ game.resources = [
         "src": "data/fnt/PressStart2P.fnt"
 >>>>>>> Stashed changes
 >>>>>>> fix map
+=======
+        "name": "PressStart2P",
+        "type": "binary",
+        "src": "data/fnt/PressStart2P.fnt"
+>>>>>>> 56c7a274913638bb108d4818504bf93142deea94
     }
 ];
