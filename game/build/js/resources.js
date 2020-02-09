@@ -70,15 +70,14 @@ game.resources = [
         "src": "data/img/map/Castle2.png"
     },
     {
+        "name": "colors",
+        "type": "image",
+        "src": "data/img/map/colors.png"
+    },
+    {
         "name": "default_glass2",
         "type": "image",
         "src": "data/img/map/default_glass2.png"
-    },
-    {
-<<<<<<< Updated upstream
-        "name": "doors_item_wood3",
-        "type": "image",
-        "src": "data/img/map/doors_item_wood3.png"
     },
     {
         "name": "doors_trapdoor_side2",
@@ -91,8 +90,6 @@ game.resources = [
         "src": "data/img/map/doors_wood_a.png"
     },
     {
-=======
->>>>>>> Stashed changes
         "name": "DungeonCrawl_ProjectUtumnoTileset",
         "type": "image",
         "src": "data/img/map/DungeonCrawl_ProjectUtumnoTileset.png"
@@ -101,6 +98,26 @@ game.resources = [
         "name": "hcolors",
         "type": "image",
         "src": "data/img/map/hcolors.png"
+    },
+    {
+        "name": "hcolors1",
+        "type": "image",
+        "src": "data/img/map/hcolors1.png"
+    },
+    {
+        "name": "hcolors2",
+        "type": "image",
+        "src": "data/img/map/hcolors2.png"
+    },
+    {
+        "name": "hcolors3",
+        "type": "image",
+        "src": "data/img/map/hcolors3.png"
+    },
+    {
+        "name": "hcolors4",
+        "type": "image",
+        "src": "data/img/map/hcolors4.png"
     },
     {
         "name": "house_inside",
@@ -148,6 +165,11 @@ game.resources = [
         "src": "data/img/map/sun.png"
     },
     {
+        "name": "wool_brown",
+        "type": "image",
+        "src": "data/img/map/wool_brown.png"
+    },
+    {
         "name": "gripe_run_right",
         "type": "image",
         "src": "data/img/sprite/gripe_run_right.png"
@@ -163,9 +185,9 @@ game.resources = [
         "src": "data/img/sprite/wheelie_right.png"
     },
     {
-        "name": "area01",
-        "type": "tmx",
-        "src": "data/map/area01.tmx"
+        "name": "PressStart2P",
+        "type": "image",
+        "src": "data/fnt/PressStart2P.png"
     },
     {
         "name": "PrivetDrive",
@@ -173,34 +195,14 @@ game.resources = [
         "src": "data/map/PrivetDrive.tmx"
     },
     {
-        "name": "area01_level_tiles",
-        "type": "tsx",
-        "src": "data/map/area01_level_tiles.tsx"
+        "name": "PrivetDrive",
+        "type": "tmx",
+        "src": "data/map/PrivetDrive.json"
     },
     {
         "name": "Background2",
         "type": "tsx",
         "src": "data/map/Background2.tsx"
-    },
-    {
-        "name": "brick3",
-        "type": "tsx",
-        "src": "data/map/brick3.tsx"
-    },
-    {
-        "name": "brick4",
-        "type": "tsx",
-        "src": "data/map/brick4.tsx"
-    },
-    {
-        "name": "bricks",
-        "type": "tsx",
-        "src": "data/map/bricks.tsx"
-    },
-    {
-        "name": "bricks2",
-        "type": "tsx",
-        "src": "data/map/bricks2.tsx"
     },
     {
         "name": "buildatlas",
@@ -233,19 +235,6 @@ game.resources = [
         "src": "data/map/DungeonCrawl_ProjectUtumnoTileset.tsx"
     },
     {
-<<<<<<< Updated upstream
-        "name": "garage2",
-        "type": "tsx",
-        "src": "data/map/garage2.tsx"
-    },
-    {
-        "name": "garagedoor",
-        "type": "tsx",
-        "src": "data/map/garagedoor.tsx"
-    },
-    {
-=======
->>>>>>> Stashed changes
         "name": "glass",
         "type": "tsx",
         "src": "data/map/glass.tsx"
@@ -254,6 +243,21 @@ game.resources = [
         "name": "hcolors",
         "type": "tsx",
         "src": "data/map/hcolors.tsx"
+    },
+    {
+        "name": "hcolors2",
+        "type": "tsx",
+        "src": "data/map/hcolors2.tsx"
+    },
+    {
+        "name": "hcolors3",
+        "type": "tsx",
+        "src": "data/map/hcolors3.tsx"
+    },
+    {
+        "name": "hcolors4",
+        "type": "tsx",
+        "src": "data/map/hcolors4.tsx"
     },
     {
         "name": "obj_misk_atlas",
@@ -266,24 +270,18 @@ game.resources = [
         "src": "data/map/ProjectUtumno_full.tsx"
     },
     {
+        "name": "roof",
+        "type": "tsx",
+        "src": "data/map/roof.tsx"
+    },
+    {
         "name": "sun",
         "type": "tsx",
         "src": "data/map/sun.tsx"
     },
     {
-<<<<<<< Updated upstream
-        "name": "windows",
-        "type": "tsx",
-        "src": "data/map/windows.tsx"
-    },
-    {
-        "name": "windows2",
-        "type": "tsx",
-        "src": "data/map/windows2.tsx"
-=======
         "name": "PressStart2P",
         "type": "binary",
         "src": "data/fnt/PressStart2P.fnt"
->>>>>>> Stashed changes
     }
 ];
