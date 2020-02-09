@@ -28,7 +28,7 @@ var game = {
     // Run on page load.
     "onload" : function () {
         // Initialize the video.
-        if (!me.video.init(640, 480, {wrapper : "screen", scale : "flex-width"})) {
+        if (!me.video.init(1080, 480, {wrapper : "screen", scale : "flex-width"})) {
             alert("Your browser does not support HTML5 canvas.");
             return;
         }
@@ -53,9 +53,18 @@ var game = {
         me.state.transition("fade", "#FFFFFF", 250);
         
         // add our player entity in the entity pool
+<<<<<<< Updated upstream
         me.pool.register("mainPlayer", game.PlayerEntity);
+<<<<<<< df5a36d70134021bdb107d4697045ac930309987
         me.pool.register("CoinEntity", game.CoinEntity);
         me.pool.register("EnemyEntity", game.EnemyEntity);
+=======
+=======
+        // me.pool.register("mainPlayer", game.PlayerEntity);
+        // me.pool.register("CoinEntity", game.CoinEntity);
+        // me.pool.register("EnemyEntity", game.EnemyEntity);
+>>>>>>> Stashed changes
+>>>>>>> fix map
 
         // enable the keyboard
         me.input.bindKey(me.input.KEY.LEFT, 'left');

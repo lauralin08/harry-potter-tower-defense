@@ -70,16 +70,20 @@ game.resources = [
         "src": "data/img/map/Castle2.png"
     },
     {
-        "name": "colors",
-        "type": "image",
-        "src": "data/img/map/colors.png"
-    },
-    {
         "name": "default_glass2",
         "type": "image",
         "src": "data/img/map/default_glass2.png"
     },
     {
+<<<<<<< df5a36d70134021bdb107d4697045ac930309987
+=======
+<<<<<<< Updated upstream
+        "name": "doors_item_wood3",
+        "type": "image",
+        "src": "data/img/map/doors_item_wood3.png"
+    },
+    {
+>>>>>>> fix map
         "name": "doors_trapdoor_side2",
         "type": "image",
         "src": "data/img/map/doors_trapdoor_side2.png"
@@ -90,6 +94,8 @@ game.resources = [
         "src": "data/img/map/doors_wood_a.png"
     },
     {
+=======
+>>>>>>> Stashed changes
         "name": "DungeonCrawl_ProjectUtumnoTileset",
         "type": "image",
         "src": "data/img/map/DungeonCrawl_ProjectUtumnoTileset.png"
@@ -143,11 +149,6 @@ game.resources = [
         "name": "sun",
         "type": "image",
         "src": "data/img/map/sun.png"
-    },
-    {
-        "name": "wool_brown",
-        "type": "image",
-        "src": "data/img/map/wool_brown.png"
     },
     {
         "name": "gripe_run_right",
@@ -215,31 +216,27 @@ game.resources = [
         "src": "data/map/Castle2.tsx"
     },
     {
-        "name": "colors",
-        "type": "tsx",
-        "src": "data/map/colors.tsx"
-    },
-    {
-        "name": "door",
-        "type": "tsx",
-        "src": "data/map/door.tsx"
-    },
-    {
-        "name": "door2",
-        "type": "tsx",
-        "src": "data/map/door2.tsx"
-    },
-    {
         "name": "DungeonCrawl_ProjectUtumnoTileset",
         "type": "tsx",
         "src": "data/map/DungeonCrawl_ProjectUtumnoTileset.tsx"
     },
     {
+<<<<<<< Updated upstream
         "name": "garage2",
         "type": "tsx",
         "src": "data/map/garage2.tsx"
     },
     {
+<<<<<<< df5a36d70134021bdb107d4697045ac930309987
+=======
+        "name": "garagedoor",
+        "type": "tsx",
+        "src": "data/map/garagedoor.tsx"
+    },
+    {
+=======
+>>>>>>> Stashed changes
+>>>>>>> fix map
         "name": "glass",
         "type": "tsx",
         "src": "data/map/glass.tsx"
@@ -260,16 +257,12 @@ game.resources = [
         "src": "data/map/ProjectUtumno_full.tsx"
     },
     {
-        "name": "roof",
-        "type": "tsx",
-        "src": "data/map/roof.tsx"
-    },
-    {
         "name": "sun",
         "type": "tsx",
         "src": "data/map/sun.tsx"
     },
     {
+<<<<<<< Updated upstream
         "name": "windows",
         "type": "tsx",
         "src": "data/map/windows.tsx"
@@ -278,9 +271,17 @@ game.resources = [
         "name": "windows2",
         "type": "tsx",
         "src": "data/map/windows2.tsx"
+<<<<<<< df5a36d70134021bdb107d4697045ac930309987
     },
     {   "name": "PressStart2P",
         "type": "binary",
         "src": "data/fnt/PressStart2P.fnt"
+=======
+=======
+        "name": "PressStart2P",
+        "type": "binary",
+        "src": "data/fnt/PressStart2P.fnt"
+>>>>>>> Stashed changes
+>>>>>>> fix map
     }
 ];
