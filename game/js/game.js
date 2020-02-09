@@ -55,15 +55,26 @@ var game = {
         // add our player entity in the entity pool
 <<<<<<< Updated upstream
         me.pool.register("mainPlayer", game.PlayerEntity);
+<<<<<<< 432b63051de386fda8189bcff7e330a870d18d48
 <<<<<<< df5a36d70134021bdb107d4697045ac930309987
         me.pool.register("CoinEntity", game.CoinEntity);
         me.pool.register("EnemyEntity", game.EnemyEntity);
 =======
 =======
+<<<<<<< HEAD
+>>>>>>> fix map
+=======
         // me.pool.register("mainPlayer", game.PlayerEntity);
         // me.pool.register("CoinEntity", game.CoinEntity);
         // me.pool.register("EnemyEntity", game.EnemyEntity);
 >>>>>>> Stashed changes
+<<<<<<< 432b63051de386fda8189bcff7e330a870d18d48
+>>>>>>> fix map
+=======
+=======
+        me.pool.register("CoinEntity", game.CoinEntity);
+        me.pool.register("EnemyEntity", game.EnemyEntity);
+>>>>>>> df5a36d70134021bdb107d4697045ac930309987
 >>>>>>> fix map
 
         // enable the keyboard
