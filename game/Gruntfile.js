@@ -133,7 +133,7 @@ module.exports = function(grunt) {
           src: ['data/bgm/**/*', 'data/sfx/**/*'],
           type: 'audio'
         },{
-          src: ['data/img/**/*.png'],
+          src: ['data/img/**/*.png', 'data/fnt/**/*.png'],
           type: 'image'
         },{
           src: ['data/img/**/*.json'],
@@ -144,6 +144,9 @@ module.exports = function(grunt) {
         },{
           src: ['data/map/**/*.tsx'],
           type: 'tsx'
+        },{
+          src: ['data/fnt/**/*.fnt'],
+          type: 'binary'
         }]
       }
     },

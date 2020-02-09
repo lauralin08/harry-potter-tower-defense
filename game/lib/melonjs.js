@@ -22233,10 +22233,15 @@
         * var basic      = renderer.createPattern(image, "no-repeat");
         */
        createPattern: function createPattern(image, repeat) {
-         if (!me.Math.isPowerOfTwo(image.width) || !me.Math.isPowerOfTwo(image.height)) {
-           var src = typeof image.src !== "undefined" ? image.src : image;
-           throw new Error("[WebGL Renderer] " + src + " is not a POT texture " + "(" + image.width + "x" + image.height + ")");
-         }
+         
+        // The following block was commented out to accomodate the background images provided in
+        // the platformer tutorial. Normally we would never do this; instead we would resize the
+        // images. In this case it messed with the bit depth, so for tutorial purposes we'll let it go
+
+        //  if (!me.Math.isPowerOfTwo(image.width) || !me.Math.isPowerOfTwo(image.height)) {
+        //    var src = typeof image.src !== "undefined" ? image.src : image;
+        //    throw new Error("[WebGL Renderer] " + src + " is not a POT texture " + "(" + image.width + "x" + image.height + ")");
+        //  }
 
          var texture = new this.Texture(this.Texture.prototype.createAtlas.apply(this.Texture.prototype, [image.width, image.height, "pattern", repeat]), image); // FIXME: Remove old cache entry and texture when changing the repeat mode
 

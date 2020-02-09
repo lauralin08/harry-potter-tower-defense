@@ -4,8 +4,24 @@ var game = {
 
     // an object where to store game information
     data : {
-        // score
-        score : 0
+	waveNumber: 1,
+	beans: 300,
+	
+	spellLv1Cost: 100,
+	spellLv2Cost: 300,
+	spellLv3Cost: 500,
+
+	lv1Damage: 0,
+	lv2Damage: 5,
+	lv3Damage: 10,
+	
+	lv1UpgradeCost: 50,
+	lv2UpgradeCost: 100,
+	lv3UpgradeCost: 300,
+
+	lv1UpgradeDamage: 0,
+	lv2UpgradeDamage: 5,
+	lv3UpgradeDamage: 10
     },
 
 
@@ -27,17 +43,28 @@ var game = {
 
     // Run on game resources loaded.
     "loaded" : function () {
+        // set the "Menu/Title" Screen Object
+        me.state.set(me.state.MENU, new game.TitleScreen());
+
         // set the "Play/Ingame" Screen Object
         me.state.set(me.state.PLAY, new game.PlayScreen());
 
+        // set a global fading transition for the screen
+        me.state.transition("fade", "#FFFFFF", 250);
+        
         // add our player entity in the entity pool
 <<<<<<< Updated upstream
         me.pool.register("mainPlayer", game.PlayerEntity);
+<<<<<<< HEAD
 =======
         // me.pool.register("mainPlayer", game.PlayerEntity);
         // me.pool.register("CoinEntity", game.CoinEntity);
         // me.pool.register("EnemyEntity", game.EnemyEntity);
 >>>>>>> Stashed changes
+=======
+        me.pool.register("CoinEntity", game.CoinEntity);
+        me.pool.register("EnemyEntity", game.EnemyEntity);
+>>>>>>> df5a36d70134021bdb107d4697045ac930309987
 
         // enable the keyboard
         me.input.bindKey(me.input.KEY.LEFT, 'left');
@@ -47,7 +74,7 @@ var game = {
         me.input.bindKey(me.input.KEY.UP, 'jump', true);
         me.input.bindKey(me.input.KEY.SPACE, 'jump', true);
 
-        // Start the game.
-        me.state.change(me.state.PLAY);
+        // Display the menu title
+        me.state.change(me.state.MENU);
     }
 };
