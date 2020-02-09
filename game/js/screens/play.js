@@ -4,7 +4,7 @@ game.PlayScreen = me.ScreenObject.extend({
      */
     onResetEvent: function() {
         // play the audio track
-        me.audio.playTrack('dst-inertexponent');
+        me.audio.playTrack('Curse Of The Ice Queen');
 
         // load a level
         me.levelDirector.loadLevel('PrivetDrive');
