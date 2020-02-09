@@ -28,11 +28,7 @@ var game = {
     // Run on page load.
     "onload" : function () {
         // Initialize the video.
-<<<<<<< HEAD
-        if (!me.video.init(1080, 480, {wrapper : "screen", scale : "flex-width"})) {
-=======
         if (!me.video.init(1024, 480, {wrapper : "screen", scale : "auto", scaleMethod : "flex"})) {
->>>>>>> 56c7a274913638bb108d4818504bf93142deea94
             alert("Your browser does not support HTML5 canvas.");
             return;
         }
@@ -55,39 +51,11 @@ var game = {
 
         // set a global fading transition for the screen
         me.state.transition("fade", "#FFFFFF", 250);
-<<<<<<< HEAD
-        
-        // add our player entity in the entity pool
-<<<<<<< Updated upstream
-        me.pool.register("mainPlayer", game.PlayerEntity);
-<<<<<<< 432b63051de386fda8189bcff7e330a870d18d48
-<<<<<<< df5a36d70134021bdb107d4697045ac930309987
-        me.pool.register("CoinEntity", game.CoinEntity);
-        me.pool.register("EnemyEntity", game.EnemyEntity);
-=======
-=======
-<<<<<<< HEAD
->>>>>>> fix map
-=======
-        // me.pool.register("mainPlayer", game.PlayerEntity);
-        // me.pool.register("CoinEntity", game.CoinEntity);
-        // me.pool.register("EnemyEntity", game.EnemyEntity);
->>>>>>> Stashed changes
-<<<<<<< 432b63051de386fda8189bcff7e330a870d18d48
->>>>>>> fix map
-=======
-=======
-        me.pool.register("CoinEntity", game.CoinEntity);
-        me.pool.register("EnemyEntity", game.EnemyEntity);
->>>>>>> df5a36d70134021bdb107d4697045ac930309987
->>>>>>> fix map
-=======
-
+    
         // add our player entity in the entity pool
         // me.pool.register("mainPlayer", game.PlayerEntity);
         // me.pool.register("CoinEntity", game.CoinEntity);
-        // me.pool.register("EnemyEntity", game.EnemyEntity);
->>>>>>> 56c7a274913638bb108d4818504bf93142deea94
+        me.pool.register("EnemyEntity", game.EnemyEntity);
 
         // enable the keyboard
         me.input.bindKey(me.input.KEY.LEFT, 'left');

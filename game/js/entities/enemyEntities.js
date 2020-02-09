@@ -45,7 +45,11 @@ game.GrindylowEnemy = game.Enemy.extend({
         // TODO: add the takeDamage animation
         // TODO: add the die animation
 
-        this.renderable.setCurrentAnimation('move');
+        this.renderable.setCurrentAnimation('stand');
+	
+	this.renderable.addAnimation("move", [4, 5, 6, 7]);
+
+	this.renderable.addAnimation("stand", [0, 1, 2, 3]); 	
     },
 
     update: function(dt) {

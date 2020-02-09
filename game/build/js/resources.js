@@ -80,30 +80,6 @@ game.resources = [
         "src": "data/img/map/default_glass2.png"
     },
     {
-<<<<<<< HEAD
-<<<<<<< df5a36d70134021bdb107d4697045ac930309987
-=======
-<<<<<<< Updated upstream
-        "name": "doors_item_wood3",
-        "type": "image",
-        "src": "data/img/map/doors_item_wood3.png"
-    },
-    {
->>>>>>> fix map
-=======
->>>>>>> 56c7a274913638bb108d4818504bf93142deea94
-        "name": "doors_trapdoor_side2",
-        "type": "image",
-        "src": "data/img/map/doors_trapdoor_side2.png"
-    },
-    {
-        "name": "doors_wood_a",
-        "type": "image",
-        "src": "data/img/map/doors_wood_a.png"
-    },
-    {
-=======
->>>>>>> Stashed changes
         "name": "DungeonCrawl_ProjectUtumnoTileset",
         "type": "image",
         "src": "data/img/map/DungeonCrawl_ProjectUtumnoTileset.png"
@@ -179,6 +155,31 @@ game.resources = [
         "src": "data/img/map/sun.png"
     },
     {
+        "name": "grindylow_back",
+        "type": "image",
+        "src": "data/img/sprite/grindylow_back.png"
+    },
+    {
+        "name": "grindylow_front",
+        "type": "image",
+        "src": "data/img/sprite/grindylow_front.png"
+    },
+    {
+        "name": "grindylow_left",
+        "type": "image",
+        "src": "data/img/sprite/grindylow_left.png"
+    },
+    {
+        "name": "grindylow_right",
+        "type": "image",
+        "src": "data/img/sprite/grindylow_right.png"
+    },
+    {
+        "name": "grindylow",
+        "type": "image",
+        "src": "data/img/sprite/grindylow.png"
+    },
+    {
         "name": "gripe_run_right",
         "type": "image",
         "src": "data/img/sprite/gripe_run_right.png"
@@ -197,24 +198,11 @@ game.resources = [
         "name": "PressStart2P",
         "type": "image",
         "src": "data/fnt/PressStart2P.png"
-<<<<<<< HEAD
-    },
-    {
-        "name": "area01",
-        "type": "tmx",
-        "src": "data/map/area01.tmx"
-=======
->>>>>>> 56c7a274913638bb108d4818504bf93142deea94
     },
     {
         "name": "PrivetDrive",
         "type": "tmx",
         "src": "data/map/PrivetDrive.tmx"
-    },
-    {
-        "name": "PrivetDrive",
-        "type": "tmx",
-        "src": "data/map/PrivetDrive.json"
     },
     {
         "name": "Background2",
@@ -248,47 +236,26 @@ game.resources = [
     },
     {
         "name": "DungeonCrawl_ProjectUtumnoTileset",
-<<<<<<< HEAD
-=======
         "type": "tsx",
         "src": "data/map/DungeonCrawl_ProjectUtumnoTileset.tsx"
     },
     {
         "name": "glass",
->>>>>>> 56c7a274913638bb108d4818504bf93142deea94
         "type": "tsx",
         "src": "data/map/glass.tsx"
     },
     {
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-        "name": "garage2",
-=======
         "name": "hcolors",
->>>>>>> 56c7a274913638bb108d4818504bf93142deea94
         "type": "tsx",
         "src": "data/map/hcolors.tsx"
     },
     {
-<<<<<<< HEAD
-<<<<<<< df5a36d70134021bdb107d4697045ac930309987
-=======
-        "name": "garagedoor",
-=======
         "name": "hcolors2",
->>>>>>> 56c7a274913638bb108d4818504bf93142deea94
         "type": "tsx",
         "src": "data/map/hcolors2.tsx"
     },
     {
-<<<<<<< HEAD
-=======
->>>>>>> Stashed changes
->>>>>>> fix map
-        "name": "glass",
-=======
         "name": "hcolors3",
->>>>>>> 56c7a274913638bb108d4818504bf93142deea94
         "type": "tsx",
         "src": "data/map/hcolors3.tsx"
     },
@@ -308,37 +275,18 @@ game.resources = [
         "src": "data/map/ProjectUtumno_full.tsx"
     },
     {
+        "name": "roof",
+        "type": "tsx",
+        "src": "data/map/roof.tsx"
+    },
+    {
         "name": "sun",
         "type": "tsx",
         "src": "data/map/sun.tsx"
     },
     {
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-        "name": "windows",
-        "type": "tsx",
-        "src": "data/map/windows.tsx"
-    },
-    {
-        "name": "windows2",
-        "type": "tsx",
-        "src": "data/map/windows2.tsx"
-<<<<<<< df5a36d70134021bdb107d4697045ac930309987
-    },
-    {   "name": "PressStart2P",
-        "type": "binary",
-        "src": "data/fnt/PressStart2P.fnt"
-=======
-=======
         "name": "PressStart2P",
         "type": "binary",
         "src": "data/fnt/PressStart2P.fnt"
->>>>>>> Stashed changes
->>>>>>> fix map
-=======
-        "name": "PressStart2P",
-        "type": "binary",
-        "src": "data/fnt/PressStart2P.fnt"
->>>>>>> 56c7a274913638bb108d4818504bf93142deea94
     }
 ];
