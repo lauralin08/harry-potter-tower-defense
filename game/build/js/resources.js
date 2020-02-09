@@ -1,5 +1,10 @@
 game.resources = [
     {
+        "name": "Curse Of The Ice Queen",
+        "type": "audio",
+        "src": "data/bgm/"
+    },
+    {
         "name": "dst-inertexponent",
         "type": "audio",
         "src": "data/bgm/"
