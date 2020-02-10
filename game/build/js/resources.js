@@ -1,5 +1,10 @@
 game.resources = [
     {
+        "name": "Curse Of The Ice Queen",
+        "type": "audio",
+        "src": "data/bgm/"
+    },
+    {
         "name": "dst-inertexponent",
         "type": "audio",
         "src": "data/bgm/"
@@ -70,24 +75,9 @@ game.resources = [
         "src": "data/img/map/Castle2.png"
     },
     {
-        "name": "colors",
-        "type": "image",
-        "src": "data/img/map/colors.png"
-    },
-    {
         "name": "default_glass2",
         "type": "image",
         "src": "data/img/map/default_glass2.png"
-    },
-    {
-        "name": "doors_trapdoor_side2",
-        "type": "image",
-        "src": "data/img/map/doors_trapdoor_side2.png"
-    },
-    {
-        "name": "doors_wood_a",
-        "type": "image",
-        "src": "data/img/map/doors_wood_a.png"
     },
     {
         "name": "DungeonCrawl_ProjectUtumnoTileset",
@@ -98,6 +88,26 @@ game.resources = [
         "name": "hcolors",
         "type": "image",
         "src": "data/img/map/hcolors.png"
+    },
+    {
+        "name": "hcolors1",
+        "type": "image",
+        "src": "data/img/map/hcolors1.png"
+    },
+    {
+        "name": "hcolors2",
+        "type": "image",
+        "src": "data/img/map/hcolors2.png"
+    },
+    {
+        "name": "hcolors3",
+        "type": "image",
+        "src": "data/img/map/hcolors3.png"
+    },
+    {
+        "name": "hcolors4",
+        "type": "image",
+        "src": "data/img/map/hcolors4.png"
     },
     {
         "name": "house_inside",
@@ -145,9 +155,29 @@ game.resources = [
         "src": "data/img/map/sun.png"
     },
     {
-        "name": "wool_brown",
+        "name": "grindylow_back",
         "type": "image",
-        "src": "data/img/map/wool_brown.png"
+        "src": "data/img/sprite/grindylow_back.png"
+    },
+    {
+        "name": "grindylow_front",
+        "type": "image",
+        "src": "data/img/sprite/grindylow_front.png"
+    },
+    {
+        "name": "grindylow_left",
+        "type": "image",
+        "src": "data/img/sprite/grindylow_left.png"
+    },
+    {
+        "name": "grindylow_right",
+        "type": "image",
+        "src": "data/img/sprite/grindylow_right.png"
+    },
+    {
+        "name": "grindylow",
+        "type": "image",
+        "src": "data/img/sprite/grindylow.png"
     },
     {
         "name": "gripe_run_right",
@@ -170,19 +200,9 @@ game.resources = [
         "src": "data/fnt/PressStart2P.png"
     },
     {
-        "name": "area01",
-        "type": "tmx",
-        "src": "data/map/area01.tmx"
-    },
-    {
         "name": "PrivetDrive",
         "type": "tmx",
         "src": "data/map/PrivetDrive.tmx"
-    },
-    {
-        "name": "area01_level_tiles",
-        "type": "tsx",
-        "src": "data/map/area01_level_tiles.tsx"
     },
     {
         "name": "Background2",
@@ -215,29 +235,9 @@ game.resources = [
         "src": "data/map/Castle2.tsx"
     },
     {
-        "name": "colors",
-        "type": "tsx",
-        "src": "data/map/colors.tsx"
-    },
-    {
-        "name": "door",
-        "type": "tsx",
-        "src": "data/map/door.tsx"
-    },
-    {
-        "name": "door2",
-        "type": "tsx",
-        "src": "data/map/door2.tsx"
-    },
-    {
         "name": "DungeonCrawl_ProjectUtumnoTileset",
         "type": "tsx",
         "src": "data/map/DungeonCrawl_ProjectUtumnoTileset.tsx"
-    },
-    {
-        "name": "garage2",
-        "type": "tsx",
-        "src": "data/map/garage2.tsx"
     },
     {
         "name": "glass",
@@ -248,6 +248,21 @@ game.resources = [
         "name": "hcolors",
         "type": "tsx",
         "src": "data/map/hcolors.tsx"
+    },
+    {
+        "name": "hcolors2",
+        "type": "tsx",
+        "src": "data/map/hcolors2.tsx"
+    },
+    {
+        "name": "hcolors3",
+        "type": "tsx",
+        "src": "data/map/hcolors3.tsx"
+    },
+    {
+        "name": "hcolors4",
+        "type": "tsx",
+        "src": "data/map/hcolors4.tsx"
     },
     {
         "name": "obj_misk_atlas",
@@ -270,16 +285,7 @@ game.resources = [
         "src": "data/map/sun.tsx"
     },
     {
-        "name": "windows",
-        "type": "tsx",
-        "src": "data/map/windows.tsx"
-    },
-    {
-        "name": "windows2",
-        "type": "tsx",
-        "src": "data/map/windows2.tsx"
-    },
-    {   "name": "PressStart2P",
+        "name": "PressStart2P",
         "type": "binary",
         "src": "data/fnt/PressStart2P.fnt"
     }
