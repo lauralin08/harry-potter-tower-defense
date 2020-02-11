@@ -318,16 +318,6 @@ game.resources = [
       "name": "Protego_Diabolica",
       "type": "audio",
       "src": "data/sfx/"
-  },
-  {
-      "name": "sprites",
-      "type": "json",
-      "src": "data/img/sprites.json"
-  },
-  {
-      "name": "sprites",
-      "type": "image",
-      "src": "data/img/sprites.png"
   }
 ];
 
