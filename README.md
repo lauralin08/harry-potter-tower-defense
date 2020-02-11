@@ -11,50 +11,33 @@ Resources:
 - [melonJS boilerplate code](https://github.com/melonjs/boilerplate) by Olivier Biot
 - [Grunt, the JavaScript Task Runner](https://gruntjs.com/)
 - [Tiled Map Editor](https://www.mapeditor.org/)
+- [Texture Packer](https://www.codeandweb.com/texturepacker)
 - [Node.js](https://nodejs.org/en/)
-- [Flask](https://www.palletsprojects.com/p/flask/)
+- [npm](https://www.npmjs.com/)
+- [Express](https://expressjs.com/)
+- [Pug](https://pugjs.org/api/getting-started.html)
 - [freeCodeCamp](https://www.freecodecamp.org/news/)
 
 ## To run the game locally
 
 You will need [Node.js](https://nodejs.org/en/) for this.
 
-From the game directory:
+From the main directory:
 
-First install any necessary dependencies.
+First install any necessary dependencies:
 - `npm install`
 - `npm install -g grunt-cli`
 
-`grunt serve`
+Then run the following command:
+- `npm start`
 
-Then navigate to [http://localhost:8000](http://localhost:8000).
+Then navigate to [http://localhost:8080](http://localhost:8080).
 
 For more information, check out the [boilerplate](https://github.com/melonjs/boilerplate).
 
-## To run the server locally
-
-You will need [Python 3.7.0](https://www.python.org/downloads/release/python-370/) for this.
-
-From the main directory:
-
-First set up your virtual env.
-- `pip install virtualenv`
-- `virtualenv venv`
-
-Activate the virtual env.
-- `source venv/bin/activate` on Mac
-- `venv\Scripts\activate` on Windows
-
-From the server directory:
-Then install any necessary dependencies.
-- `pip install -r requirements.txt`
-
-`python main.py`
-
-Then navigate to [http://localhost:8080](http://localhost:8080)
-
-
 ## In progress
-- serving the game through the python server
-- replacing the tutorial game with the harry potter game
-- pretty much everything
+- Units & AI
+- Game engine
+- Game balance
+- Title, Win, and Lose screens
+- Scoring
