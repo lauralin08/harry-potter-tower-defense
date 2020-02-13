@@ -1,0 +1,23 @@
+{
+  "short_name": "HP Tower Defense",
+  "name": "Harry Potter Tower Defense Game",
+  "orientation": "landscape",
+  "developer": {
+    "name": "Laura Lin & Samantha Schrock"
+  },
+  "start_url": "./play.pug",
+  "display": "fullscreen",
+  "icons": [{
+    "src": "/icons/touch-icon-iphone-60x60.png",
+    "sizes": "60x60"
+  },{
+    "src": "/icons/touch-icon-ipad-76x76.png",
+    "sizes": "76x76"
+  },{
+    "src": "/icons/touch-icon-iphone-retina-120x120",
+    "sizes": "120x120"
+  },{
+    "src": "/icons/touch-icon-marketplace-128x128",
+    "sizes": "128x128"
+  }]
+}
