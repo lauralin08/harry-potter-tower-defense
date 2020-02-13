@@ -5,11 +5,6 @@ game.resources = [
       "src": "data/bgm/"
   },
   {
-      "name": "dst-inertexponent",
-      "type": "audio",
-      "src": "data/bgm/"
-  },
-  {
       "name": "cling",
       "type": "audio",
       "src": "data/sfx/"
@@ -30,114 +25,14 @@ game.resources = [
       "src": "data/img/gui/title_screen.png"
   },
   {
-      "name": "Background2",
+      "name": "level1",
       "type": "image",
-      "src": "data/img/map/Background2.png"
+      "src": "data/img/map/level1.png"
   },
   {
-      "name": "build_atlas",
-      "type": "image",
-      "src": "data/img/map/build_atlas.png"
-  },
-  {
-      "name": "castle_tileset_part1",
-      "type": "image",
-      "src": "data/img/map/castle_tileset_part1.png"
-  },
-  {
-      "name": "castle_tileset_part2",
-      "type": "image",
-      "src": "data/img/map/castle_tileset_part2.png"
-  },
-  {
-      "name": "castle_tileset_part3",
-      "type": "image",
-      "src": "data/img/map/castle_tileset_part3.png"
-  },
-  {
-      "name": "Castle2",
-      "type": "image",
-      "src": "data/img/map/Castle2.png"
-  },
-  {
-      "name": "default_glass2",
-      "type": "image",
-      "src": "data/img/map/default_glass2.png"
-  },
-  {
-      "name": "DungeonCrawl_ProjectUtumnoTileset",
-      "type": "image",
-      "src": "data/img/map/DungeonCrawl_ProjectUtumnoTileset.png"
-  },
-  {
-      "name": "hcolors",
-      "type": "image",
-      "src": "data/img/map/hcolors.png"
-  },
-  {
-      "name": "hcolors1",
-      "type": "image",
-      "src": "data/img/map/hcolors1.png"
-  },
-  {
-      "name": "hcolors2",
-      "type": "image",
-      "src": "data/img/map/hcolors2.png"
-  },
-  {
-      "name": "hcolors3",
-      "type": "image",
-      "src": "data/img/map/hcolors3.png"
-  },
-  {
-      "name": "hcolors4",
-      "type": "image",
-      "src": "data/img/map/hcolors4.png"
-  },
-  {
-      "name": "house_inside",
-      "type": "image",
-      "src": "data/img/map/house_inside.png"
-  },
-  {
-      "name": "hyptosis_sprites-and-tiles-for-you",
-      "type": "image",
-      "src": "data/img/map/hyptosis_sprites-and-tiles-for-you.png"
-  },
-  {
-      "name": "magical-potions-items-tileset",
-      "type": "image",
-      "src": "data/img/map/magical-potions-items-tileset.png"
-  },
-  {
-      "name": "obj_misk_atlas",
-      "type": "image",
-      "src": "data/img/map/obj_misk_atlas.png"
-  },
-  {
-      "name": "oppcastle-mod-tiles",
-      "type": "image",
-      "src": "data/img/map/oppcastle-mod-tiles.png"
-  },
-  {
-      "name": "oppcastle-tiles",
-      "type": "image",
-      "src": "data/img/map/oppcastle-tiles.png"
-  },
-  {
-      "name": "pngfuelcom",
-      "type": "image",
-      "src": "data/img/map/pngfuelcom.png"
-  },
-  {
-      "name": "ProjectUtumno_full",
-      "type": "image",
-      "src": "data/img/map/ProjectUtumno_full.png"
-  },
-  {
-      "name": "sun",
-      "type": "image",
-      "src": "data/img/map/sun.png"
+      "name": "level1",
+      "type": "json",
+      "src": "data/img/map/level1.json"
   },
   {
       "name": "grindylow_back",
@@ -190,84 +85,9 @@ game.resources = [
       "src": "data/map/PrivetDrive.tmx"
   },
   {
-      "name": "Background2",
+      "name": "level1",
       "type": "tsx",
-      "src": "data/map/Background2.tsx"
-  },
-  {
-      "name": "buildatlas",
-      "type": "tsx",
-      "src": "data/map/buildatlas.tsx"
-  },
-  {
-      "name": "castle_tileset_part1",
-      "type": "tsx",
-      "src": "data/map/castle_tileset_part1.tsx"
-  },
-  {
-      "name": "castle_tileset_part2",
-      "type": "tsx",
-      "src": "data/map/castle_tileset_part2.tsx"
-  },
-  {
-      "name": "castle_tileset_part3",
-      "type": "tsx",
-      "src": "data/map/castle_tileset_part3.tsx"
-  },
-  {
-      "name": "Castle2",
-      "type": "tsx",
-      "src": "data/map/Castle2.tsx"
-  },
-  {
-      "name": "DungeonCrawl_ProjectUtumnoTileset",
-      "type": "tsx",
-      "src": "data/map/DungeonCrawl_ProjectUtumnoTileset.tsx"
-  },
-  {
-      "name": "glass",
-      "type": "tsx",
-      "src": "data/map/glass.tsx"
-  },
-  {
-      "name": "hcolors",
-      "type": "tsx",
-      "src": "data/map/hcolors.tsx"
-  },
-  {
-      "name": "hcolors2",
-      "type": "tsx",
-      "src": "data/map/hcolors2.tsx"
-  },
-  {
-      "name": "hcolors3",
-      "type": "tsx",
-      "src": "data/map/hcolors3.tsx"
-  },
-  {
-      "name": "hcolors4",
-      "type": "tsx",
-      "src": "data/map/hcolors4.tsx"
-  },
-  {
-      "name": "obj_misk_atlas",
-      "type": "tsx",
-      "src": "data/map/obj_misk_atlas.tsx"
-  },
-  {
-      "name": "ProjectUtumno_full",
-      "type": "tsx",
-      "src": "data/map/ProjectUtumno_full.tsx"
-  },
-  {
-      "name": "roof",
-      "type": "tsx",
-      "src": "data/map/roof.tsx"
-  },
-  {
-      "name": "sun",
-      "type": "tsx",
-      "src": "data/map/sun.tsx"
+      "src": "data/map/level1.tsx"
   },
   {
       "name": "PressStart2P",
