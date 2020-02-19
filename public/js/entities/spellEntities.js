@@ -55,6 +55,8 @@ game.ImperturbableCharmSpell = game.Spell.extend({
         // TODO: add the explode animation
 
         // this.renderable.setCurrentAnimation('idle');
+
+	me.audio.play("Imperturbable");
     },
 
     // TODO: add logic for casting spells from the spell tower
@@ -73,6 +75,8 @@ game.ProtegoDiabolicaSpell = game.Spell.extend({
         // TODO: add the explode animation
 
         // this.renderable.setCurrentAnimation('idle');
+	
+	me.audio.play("Protego_Diabolica");
     },
 
     // TODO: add logic for casting spells from the spell tower
@@ -91,6 +95,8 @@ game.PatronusCharmSpell = game.Spell.extend({
         // TODO: add the explode animation
 
         // this.renderable.setCurrentAnimation('idle');
+
+	me.audio.play("Expecto_Patronum");
     },
 
     // TODO: add logic for casting spells from the spell tower

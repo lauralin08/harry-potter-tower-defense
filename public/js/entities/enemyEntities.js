@@ -74,12 +74,29 @@ game.GrindylowEnemy = game.Enemy.extend({
 
         // check & update movement
         this.body.update(dt);
+	
+	// handle collisions againt other shapes
+	me.collision.check(this);
 
         // return true if we moved or if the renderable was updated
         return (this._super(me.Entity, 'update', [dt])
                 || this.body.vel.x !== 0
                 || this.body.vel.y !== 0);
-    }
+    },
+    /**
+     * Colision handler
+    */
+    onCollision : function (response, other) {
+	if (response.b.body.collisionType !== me.collision.types.WORLD_SHAPE) {
+		if(this.alive && (response.overlapV.x < 0)) {
+			this.renderable.flicker(750);
+			this.alive = false;
+		}
+		return false;
+	}
+	//make all other objects solid
+	return true;
+     }
 
     // TODO: on die, drop BeanEntity and add attackPower to spell casting power
 });
