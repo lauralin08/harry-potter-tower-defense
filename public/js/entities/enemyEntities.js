@@ -6,38 +6,63 @@ const ACROMANTULA_ATTACK = 10;
 const DEMENTOR_HEALTH = 30;
 const DEMENTOR_ATTACK = 15;
 
+function onEnemyDeath(enemy, attackPower) {
+    me.game.world.addChild(new game.BertieBottsBean(enemy.pos.x, enemy.pos.y));
+    me.game.world.removeChild(enemy);
+    game.data.beans += attackPower;
+}
+
+function onGameOver(){
+    // TODO: raise the dark mark and move to the game over screen
+    // in terms of enemy entities, this probably means cleaning up all child elements?
+
+}
+
 /**
  * A basic enemy entity
  */
 game.Enemy = me.Entity.extend({
-    init: function(x, y, settings, health, attackPower) {
-        // randomly generate the enemy start position
-        var boardHeight = 16;
-        // generate the starting tile
-        var yCoord = Math.floor(Math.random() * boardHeight)
-        // convert the tile to a pixel coordinate
-        yCoord = yCoord ? yCoord * 32 : 32;
+    init: function(y, health, attackPower) {
+        // TODO: specify height and image for different enemy types
+        settings = {
+            width: 576,
+            height: 32,
+            framewidth: 32,
+            image: 'grindylow_right'
+        }
 
-        // TODO: make sure there isn't already an enemy here
-
-        // enemies start on the left and travel to the right
+        // enemies start on the right and travel to the left
         // TODO: Entities are pre-inserted in Tiled for now -- change that!
         // this._super(me.Entity, 'init', [1024, yCoord, settings]);
-        this._super(me.Entity, 'init', [1024, y, settings]);
+        this._super(me.Entity, 'init', [752, y, settings]);
 
-        // max walking speed
-        this.body.setMaxVelocity(1, 0);
-        this.body.setFriction(0.4, 0);
-
-        // TODO: confirm the end position
-        this.endX = 448;
+        // max friction
+        this.body.setFriction(0.4, 0.4);
 
         this.alwaysUpdate = true;
         this.alive = true;
-        this.reachedEnd = false;
 
+        // TODO: confirm the end position
+        this.endX = 176;
+        this.endY = (me.game.viewport.height / 2) + 240;
+        this.reachedEnd = false;
         this.health = health;
         this.attackPower = attackPower;
+        this.timer = 0;
+    },
+    /**
+     * Collision handler
+    */
+    onCollision : function (response, other) {
+        if (response.b.body.collisionType !== me.collision.types.WORLD_SHAPE) {
+            if(this.alive && (response.overlapV.x < 0)) {
+                this.renderable.flicker(750);
+                this.alive = false;
+            }
+            return false;
+        }
+        // make all other objects solid
+       return true;
     }
 });
 
@@ -45,8 +70,11 @@ game.Enemy = me.Entity.extend({
  * Grindylow Entity
  */
 game.GrindylowEnemy = game.Enemy.extend({
-    init: function(x, y, settings) {
-        this._super(game.Enemy, 'init', [x, y, settings, GRINDYLOW_HEALTH, GRINDYLOW_ATTACK]);
+    init: function(y) {
+        this._super(game.Enemy, 'init', [y, GRINDYLOW_HEALTH, GRINDYLOW_ATTACK]);
+
+        // max walking speed
+        this.body.setMaxVelocity(1, 0);
 
         // TODO: add the attack animation
         // TODO: add the takeDamage animation
@@ -59,24 +87,43 @@ game.GrindylowEnemy = game.Enemy.extend({
 
     update: function(dt) {
         if (this.alive && !this.reachedEnd) {
-            // generate the next step in the enemy path -- right only
-            // TODO: figure out how to make enemies pause for a couple seconds on each tile
-            if (this.pos.x > this.endX) {
-                this.body.force.x = -this.body.maxVel.x;
+            if (this.body.force.x) {
+                // move toward the objective -- left only
+                if (this.pos.x > this.endX) {
+                    if (Math.floor(this.pos.x + 16) % 32 !== 0) {
+                        this.body.force.x = -this.body.maxVel.x;
+                    } else {
+                        // pause the enemy on each square
+                        this.body.force.x = 0;
+                    }
+                } else {
+                    this.reachedEnd = true;
+                }
+            } else if (this.timer < 2000) {
+                // pause the enemy for 2 seconds
+                this.timer += dt;
             } else {
-                this.reachedEnd = true;
+                // resume movement
+                this.timer = 0;
+                this.body.force.x = -this.body.maxVel.x;
             }
-
             // if blocked, attack the tower blocking the path
         } else {
             this.body.force.x = 0;
+            if (!this.alive) {
+                // drop BeanEntity and add attackPower to spell casting power
+                onEnemyDeath(this, GRINDYLOW_ATTACK);
+            } else if (this.reachedEnd) {
+                // TODO: game over... raise the dark mark!
+                onGameOver();
+            }
         }
 
         // check & update movement
         this.body.update(dt);
 	
-	// handle collisions againt other shapes
-	me.collision.check(this);
+        // handle collisions againt other shapes
+        me.collision.check(this);
 
         // return true if we moved or if the renderable was updated
         return (this._super(me.Entity, 'update', [dt])
@@ -84,30 +131,34 @@ game.GrindylowEnemy = game.Enemy.extend({
                 || this.body.vel.y !== 0);
     },
     /**
-     * Colision handler
+     * Collision handler
+     * TODO: override this
     */
     onCollision : function (response, other) {
-	if (response.b.body.collisionType !== me.collision.types.WORLD_SHAPE) {
-		if(this.alive && (response.overlapV.x < 0)) {
-			this.renderable.flicker(750);
-			this.alive = false;
-		}
-		return false;
-	}
-	//make all other objects solid
-	return true;
-     }
+        if (response.b.body.collisionType !== me.collision.types.WORLD_SHAPE) {
+            if(this.alive && (response.overlapV.x < 0)) {
+                this.renderable.flicker(750);
+                this.alive = false;
+            }
+            return false;
+        }
+        // make all other objects solid
+        return true;
+    }
 
-    // TODO: on die, drop BeanEntity and add attackPower to spell casting power
 });
 
 /**
  * Acromantula Entity
  */
 game.AcromantulaEnemy = game.Enemy.extend({
-    init: function(x, y, settings) {
+    init: function(y) {
         // TODO: set health
-        this._super(game.Enemy, 'init', [x, y, settings, ACROMANTULA_HEALTH, ACROMANTULA_ATTACK]);
+        this._super(game.Enemy, 'init', [y, ACROMANTULA_HEALTH, ACROMANTULA_ATTACK]);
+
+        // max walking speed
+        // this.body.setMaxVelocity(1, 1);
+        this.body.setMaxVelocity(1, 0);
 
         // TODO: add the move animation
         // TODO: add the attack animation
@@ -121,41 +172,101 @@ game.AcromantulaEnemy = game.Enemy.extend({
 
     update: function(dt) {
         if (this.alive && !this.reachedEnd) {
-            // generate the next step in the enemy path
-            //  -- right, diag up, or diag down
-            // TODO: add diags
-            // TODO: figure out how to make enemies pause for a couple seconds on each tile
-            if (this.pos.x > this.endX) {
-                this.body.force.x = -this.body.maxVel.x;
+            if (this.body.force.x) {
+                // move toward the objective -- left only
+                if (this.pos.x > this.endX) {
+                    if (Math.floor(this.pos.x + 16) % 32 !== 0) {
+                        this.body.force.x = -this.body.maxVel.x;
+                    } else {
+                        // pause the enemy on each square
+                        this.body.force.x = 0;
+                    }
+                } else {
+                    this.reachedEnd = true;
+                }
+            } else if (this.timer < 1000) {
+                // pause the enemy for 1 second
+                this.timer += dt;
             } else {
-                this.reachedEnd = true;
+                // resume movement
+                this.timer = 0;
+                this.body.force.x = -this.body.maxVel.x;
             }
+            // if blocked, attack the tower blocking the path
+        // }
+        // // TODO: come back to this
+        // if (this.alive && !this.reachedEnd) {
+        //     if (this.alive && !this.reachedEnd) {
+        //         if (this.body.force.x) {
+        //             // move toward the objective -- left, diag up, and diag down
+        //             if (this.pos.x > this.endX) {
+        //                 if (this.pos.y < this.endY) {
+        //                     if (Math.floor(this.pos.x) % 32 !== 0 || Math.floor(this.pos.y) % 32 !== 0) {
+        //                         this.body.force.x = -this.body.maxVel.x;
+        //                         this.body.force.y = this.body.maxVel.y;
+        //                     } else {
+        //                         // pause the enemy on each square
+        //                         this.body.force.x = 0;
+        //                         this.body.force.y = 0;
+        //                     }
+        //                 } else {
+        //                     this.body.force.y = -this.body.force.y * 2;
+        //                 }
+        //             } else {
+        //                 this.reachedEnd = true;
+        //             }
+        //         } else if (this.timer < 2000) {
+        //             // pause the enemy for 2 seconds
+        //             this.timer += dt;
+        //         } else {
+        //             // resume movement
+        //             this.timer = 0;
+        //             this.body.force.x = -this.body.maxVel.x;
 
-            // if the next step is blocked, either pick another step
-            // or attack the tower which is blocking the path
+        //             if (this.goingUp || Math.floor(this.pos.y) >= this.endY) {
+        //                 this.body.force.y = this.body.maxVel.y;
+        //                 this.goingUp = true;
+        //             } else {
+        //                 this.body.force.y = 0;
+        //                 this.goingUp = false;
+        //             }
+        //         }
+        //     }
+            // if blocked, attack the tower blocking the path
         } else {
             this.body.force.x = 0;
+            if (!this.alive) {
+                // drop BeanEntity and add attackPower to spell casting power
+                onEnemyDeath(this, ACROMANTULA_ATTACK);
+            } else if (this.reachedEnd) {
+                // TODO: game over... raise the dark mark!
+                onGameOver();
+            }
         }
 
         // check & update movement
         this.body.update(dt);
+	
+        // handle collisions againt other shapes
+        me.collision.check(this);
 
         // return true if we moved or if the renderable was updated
         return (this._super(me.Entity, 'update', [dt])
                 || this.body.vel.x !== 0
                 || this.body.vel.y !== 0);
     }
-
-    // TODO: on die, drop BeanEntity and add attackPower to spell casting power
 });
 
 /**
  * Dementor Entity
  */
 game.DementorEnemy = game.Enemy.extend({
-    init: function(x, y, settings) {
+    init: function(y) {
         // TODO: set health
-        this._super(game.Enemy, 'init', [x, y, settings, DEMENTOR_HEALTH, DEMENTOR_ATTACK]);
+        this._super(game.Enemy, 'init', [y, DEMENTOR_HEALTH, DEMENTOR_ATTACK]);
+
+        // max walking speed
+        this.body.setMaxVelocity(1, 0);
 
         // TODO: add the move animation
         // TODO: add the attack animation
@@ -169,30 +280,49 @@ game.DementorEnemy = game.Enemy.extend({
 
     update: function(dt) {
         if (this.alive && !this.reachedEnd) {
-            // generate the next step in the enemy path
-            //  -- right, diag up, diag down, up, or down
-            // TODO: add diags, ups, downs
-            // TODO: figure out how to make enemies pause for a couple seconds on each tile
-            if (this.pos.x > this.endX) {
-                this.body.force.x = -this.body.maxVel.x;
+            if (this.body.force.x) {
+                // move toward the objective -- left, up, down, diag up, diag down
+                // TODO: add diags, ups, downs
+                if (this.pos.x > this.endX) {
+                    if (Math.floor(this.pos.x + 16) % 32 !== 0) {
+                        this.body.force.x = -this.body.maxVel.x;
+                    } else {
+                        // pause the enemy on each square
+                        this.body.force.x = 0;
+                    }
+                } else {
+                    this.reachedEnd = true;
+                }
+            } else if (this.timer < 1500) {
+                // pause the enemy for 1.5 seconds
+                this.timer += dt;
             } else {
-                this.reachedEnd = true;
+                // resume movement
+                this.timer = 0;
+                this.body.force.x = -this.body.maxVel.x;
             }
-
             // if the next step is blocked, either pick another step
             // or attack the tower which is blocking the path
-        } else {
+        }  else {
             this.body.force.x = 0;
+            if (!this.alive) {
+                // drop BeanEntity and add attackPower to spell casting power
+                onEnemyDeath(this, DEMENTOR_ATTACK);
+            } else if (this.reachedEnd) {
+                // TODO: game over... raise the dark mark!
+                onGameOver();
+            }
         }
 
         // check & update movement
         this.body.update(dt);
+	
+        // handle collisions againt other shapes
+        me.collision.check(this);
 
         // return true if we moved or if the renderable was updated
         return (this._super(me.Entity, 'update', [dt])
                 || this.body.vel.x !== 0
                 || this.body.vel.y !== 0);
     }
-
-    // TODO: on die, drop BeanEntity and add attackPower to spell casting power
 });
