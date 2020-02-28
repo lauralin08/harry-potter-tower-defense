@@ -6,6 +6,30 @@ const PROTEGO_ATTACK = 10;
 const PATRONUS_HEALTH = 40;
 const PATRONUS_ATTACK = 15;
 
+game.upgradeButton = me.GUI_Object.extend({
+    init: function(x, y) {
+        settings = {
+            height: 16,
+            width: 16
+        }
+        this._super(me.GUI_Object, 'init', [x, y, settings]);
+    },
+    onClick: function(event) {
+        var upgradeList = {
+            0: game.data.lv1UpgradeCost,
+            1: game.data.lv2UpgradeCost,
+            2: game.data.lv3UpgradeCost
+        }
+        // TODO: this doesn't actually do anything right now; figure it out!
+        if (this.upgradeLevel < 3) {
+            if (game.data.beans >= upgradeList[this.upgradeLevel]) {
+                this.upgradeLevel++;
+                game.data.beans -= upgradeList[this.upgradeLevel];
+            }
+        }
+    }
+})
+
 /**
  * A basic spell entity
  */
@@ -26,20 +50,8 @@ game.Spell = me.Entity.extend({
 
     },
 
-    // TODO: this doesn't actually do anything right now; figure it out!
-    onClick: function(event) {
-        var upgradeList = {
-            0: game.data.lv1UpgradeCost,
-            1: game.data.lv2UpgradeCost,
-            2: game.data.lv3UpgradeCost
-        }
-        if (this.upgradeLevel < 3) {
-            if (game.data.beans >= upgradeList[this.upgradeLevel]) {
-                this.upgradeLevel++;
-                game.data.beans -= upgradeList[this.upgradeLevel];
-            }
-        }
-    }
+    // TODO: add the tower upgrade button
+    
 });
 
 /**

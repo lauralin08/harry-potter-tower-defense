@@ -1,3 +1,20 @@
+function generateEnemies(number, enemyType) {
+    for (var i = 0; i < number; i++) {
+        var boardHeight = 16;
+        // generate the starting tile
+        var yCoord = Math.floor(Math.random() * boardHeight)
+        // convert the tile to a pixel coordinate
+        yCoord = yCoord ? yCoord * 32 : 32;
+        me.game.world.addChild(me.pool.pull(enemyType, yCoord));
+    }
+}
+
+function generateEnemyWave(numGrindylows, numAcromantulas, numDementors) {
+    generateEnemies(numGrindylows, 'GrindylowEnemy');
+    generateEnemies(numAcromantulas, 'AcromantulaEnemy');
+    generateEnemies(numDementors, 'DementorEnemy');
+}
+
 game.PlayScreen = me.ScreenObject.extend({
     /**
      *  action to perform on state change
@@ -19,6 +36,10 @@ game.PlayScreen = me.ScreenObject.extend({
         // Can also be forced by specifying a "Infinity" z value to the addChild function.
         this.HUD = new game.HUD.Container();
         me.game.world.addChild(this.HUD);
+
+        // randomly generate the enemy start position
+        // for the first wave, we'll do 5 grindylows, 2 acromantulas, and 1 dementor
+        generateEnemyWave(5, 2, 1);
     },
 
     /**

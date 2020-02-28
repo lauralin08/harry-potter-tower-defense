@@ -67,8 +67,10 @@ game.HUD.ScoreItem = me.Renderable.extend({
      * draw the score
      */
     draw : function (renderer) {
+        // calculate the bottom right of the map (272 is half the map height + 1 tile height)
+        var scoreY = (me.game.viewport.height / 2) + 272 - this.pos.y;
         // this.pos.x and this.pos.y are the relative position from the screen right bottom
-        this.font.draw(renderer, game.data.score, me.game.viewport.width + this.pos.x, me.game.viewport.height + this.pos.y);
+        this.font.draw(renderer, game.data.score, me.game.viewport.width + this.pos.x, scoreY);
     }
 
 });
@@ -101,8 +103,9 @@ game.HUD.Beans = me.Renderable.extend({
     },
 
     draw: function(renderer) {
+        // calculate the top right of the map (272 is half the map height + 1 tile height)
+        var beanCounterY = (me.game.viewport.height / 2) - 272 - this.pos.y;
         // this will display the spell casting power in the top right
-        this.font.draw(renderer, game.data.beans, me.game.viewport.width + this.pos.x,
-                        me.game.viewport.height - 1024);
+        this.font.draw(renderer, game.data.beans, me.game.viewport.width + this.pos.x, beanCounterY);
     }
 });
