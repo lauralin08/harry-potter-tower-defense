@@ -65,8 +65,9 @@ game.ImperturbableCharmSpell = game.Spell.extend({
         // TODO: add the cast animation
         // TODO: add the deflect animation
         // TODO: add the explode animation
-
-        // this.renderable.setCurrentAnimation('idle');
+        this.renderable.addAnimation("idle", [0]);
+        this.renderable.addAnimation("cast", [1, 2, 3, 4, 5, 6]);
+        this.renderable.setCurrentAnimation("cast", "idle");
 
 	me.audio.play("Imperturbable");
     },
