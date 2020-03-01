@@ -105,6 +105,11 @@ game.resources = [
       "src": "data/img/sprite/Deer_Run.png"
   },
   {
+      "name": "imperturbable",
+      "type": "image",
+      "src": "data/img/sprite/imperturbable.png"
+  },
+  {
       "name": "Imperturbable_1",
       "type": "image",
       "src": "data/img/sprite/Imperturbable_1.png"

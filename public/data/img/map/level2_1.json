@@ -1,0 +1,52 @@
+{"frames": [
+
+{
+	"filename": "all_tilesets",
+	"frame": {"x":160,"y":0,"w":192,"h":464},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":192,"h":464},
+	"sourceSize": {"w":192,"h":464}
+},
+{
+	"filename": "level 2 options",
+	"frame": {"x":800,"y":0,"w":1542,"h":2512},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1542,"h":2512},
+	"sourceSize": {"w":1542,"h":2512}
+},
+{
+	"filename": "magical-potions-items-tileset",
+	"frame": {"x":0,"y":0,"w":160,"h":160},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":160,"h":160},
+	"sourceSize": {"w":160,"h":160}
+},
+{
+	"filename": "PC Computer - RPG Maker MV - Dungeon",
+	"frame": {"x":0,"y":2512,"w":2312,"h":1496},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":2312,"h":1496},
+	"sourceSize": {"w":2312,"h":1496}
+},
+{
+	"filename": "walls1",
+	"frame": {"x":352,"y":0,"w":448,"h":512},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":448,"h":512},
+	"sourceSize": {"w":448,"h":512}
+}],
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "level2_1.png",
+	"format": "RGBA8888",
+	"size": {"w":2342,"h":4008},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:510f7d0cfca13595f9523b02fd414ed6:420c2073360282c1a5bde837f92b34fc:0b32258aeff8b4c2baf0c50e9ce081ce$"
+}
+}

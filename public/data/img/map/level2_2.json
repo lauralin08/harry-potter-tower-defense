@@ -1,0 +1,36 @@
+{"frames": [
+
+{
+	"filename": "celianna_mansiontiles",
+	"frame": {"x":0,"y":0,"w":608,"h":768},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":608,"h":768},
+	"sourceSize": {"w":608,"h":768}
+},
+{
+	"filename": "celianna_orchestra_tiles",
+	"frame": {"x":608,"y":0,"w":480,"h":448},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":480,"h":448},
+	"sourceSize": {"w":480,"h":448}
+},
+{
+	"filename": "TileD",
+	"frame": {"x":1088,"y":0,"w":512,"h":512},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":512,"h":512},
+	"sourceSize": {"w":512,"h":512}
+}],
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "level2_2.png",
+	"format": "RGBA8888",
+	"size": {"w":1600,"h":768},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:b0fc1f95e5901a3496cd987e4b05837a:81a2fb9fc614cac49f8ba3ec45e8ab01:a24a20fa2d783de6fcf4ea636d5d34ed$"
+}
+}
