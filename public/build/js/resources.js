@@ -60,6 +60,16 @@ game.resources = [
       "src": "data/img/sprite/grindylow.png"
   },
   {
+      "name": "acromantula",
+      "type": "image",
+      "src": "data/img/sprite/Giant_Spider.png"
+  },
+  {
+      "name": "dementor",
+      "type": "image",
+      "src": "data/img/sprite/dementor2.png"
+  },
+  {
       "name": "gripe_run_right",
       "type": "image",
       "src": "data/img/sprite/gripe_run_right.png"
@@ -83,6 +93,11 @@ game.resources = [
       "name": "PrivetDrive",
       "type": "tmx",
       "src": "data/map/PrivetDrive.tmx"
+  },
+  {
+      "name": "Gringotts",
+      "type": "tmx",
+      "src": "data/map/Gringotts.tmx"
   },
   {
       "name": "level1",

@@ -7,29 +7,33 @@ const DEMENTOR_HEALTH = 30;
 const DEMENTOR_ATTACK = 15;
 
 function onEnemyDeath(enemy, attackPower) {
-    me.game.world.addChild(new game.BertieBottsBean(enemy.pos.x, enemy.pos.y));
-    me.game.world.removeChild(enemy);
-    game.data.beans += attackPower;
+    // prevent duplicate removal
+    if (enemy.deployed) {
+        // remove this enemy from the total enemy count
+        game.data.enemies--;
+
+        me.game.world.addChild(new game.BertieBottsBean(enemy.pos.x, enemy.pos.y));
+        me.game.world.removeChild(enemy);
+        game.data.beans += attackPower;
+        enemy.removed = true;
+    }
 }
 
 function onGameOver(){
     // TODO: raise the dark mark and move to the game over screen
     // in terms of enemy entities, this probably means cleaning up all child elements?
-
+    // me.state.set(me.state.GAMEOVER, new game.LoseScreen());
 }
 
 /**
  * A basic enemy entity
  */
 game.Enemy = me.Entity.extend({
-    init: function(y, health, attackPower) {
+    init: function(y, health, attackPower, settings) {
         // TODO: specify height and image for different enemy types
-        settings = {
-            width: 576,
-            height: 32,
-            framewidth: 32,
-            image: 'grindylow_right'
-        }
+        settings.width = 576;
+        settings.height = 32;
+        settings.framewidth = 32;
 
         // enemies start on the right and travel to the left
         // TODO: Entities are pre-inserted in Tiled for now -- change that!
@@ -49,11 +53,12 @@ game.Enemy = me.Entity.extend({
         this.health = health;
         this.attackPower = attackPower;
         this.timer = 0;
+        this.deployed = true;
     },
     /**
      * Collision handler
     */
-    onCollision : function (response, other) {
+    onCollision: function (response, other) {
         if (response.b.body.collisionType !== me.collision.types.WORLD_SHAPE) {
             if(this.alive && (response.overlapV.x < 0)) {
                 this.renderable.flicker(750);
@@ -71,7 +76,10 @@ game.Enemy = me.Entity.extend({
  */
 game.GrindylowEnemy = game.Enemy.extend({
     init: function(y) {
-        this._super(game.Enemy, 'init', [y, GRINDYLOW_HEALTH, GRINDYLOW_ATTACK]);
+        settings = {
+            image: 'grindylow_right'
+        }
+        this._super(game.Enemy, 'init', [y, GRINDYLOW_HEALTH, GRINDYLOW_ATTACK, settings]);
 
         // max walking speed
         this.body.setMaxVelocity(1, 0);
@@ -99,8 +107,8 @@ game.GrindylowEnemy = game.Enemy.extend({
                 } else {
                     this.reachedEnd = true;
                 }
-            } else if (this.timer < 2000) {
-                // pause the enemy for 2 seconds
+            } else if (this.timer < 3000) {
+                // pause the enemy for 3 seconds
                 this.timer += dt;
             } else {
                 // resume movement
@@ -134,7 +142,7 @@ game.GrindylowEnemy = game.Enemy.extend({
      * Collision handler
      * TODO: override this
     */
-    onCollision : function (response, other) {
+    onCollision: function (response, other) {
         if (response.b.body.collisionType !== me.collision.types.WORLD_SHAPE) {
             if(this.alive && (response.overlapV.x < 0)) {
                 this.renderable.flicker(750);
@@ -153,8 +161,10 @@ game.GrindylowEnemy = game.Enemy.extend({
  */
 game.AcromantulaEnemy = game.Enemy.extend({
     init: function(y) {
-        // TODO: set health
-        this._super(game.Enemy, 'init', [y, ACROMANTULA_HEALTH, ACROMANTULA_ATTACK]);
+        settings = {
+            image: 'acromantula'
+        }
+        this._super(game.Enemy, 'init', [y, ACROMANTULA_HEALTH, ACROMANTULA_ATTACK, settings]);
 
         // max walking speed
         // this.body.setMaxVelocity(1, 1);
@@ -164,7 +174,7 @@ game.AcromantulaEnemy = game.Enemy.extend({
         // TODO: add the attack animation
         // TODO: add the takeDamage animation
         // TODO: add the die animation
-        // TODO: change to acro image
+        // TODO: set the animation up correctly
         this.renderable.addAnimation("move", [4, 5, 6, 7]);
         this.renderable.addAnimation("stand", [0, 1, 2, 3]);
         this.renderable.setCurrentAnimation('stand');
@@ -184,8 +194,8 @@ game.AcromantulaEnemy = game.Enemy.extend({
                 } else {
                     this.reachedEnd = true;
                 }
-            } else if (this.timer < 1000) {
-                // pause the enemy for 1 second
+            } else if (this.timer < 2000) {
+                // pause the enemy for 2 second
                 this.timer += dt;
             } else {
                 // resume movement
@@ -262,8 +272,10 @@ game.AcromantulaEnemy = game.Enemy.extend({
  */
 game.DementorEnemy = game.Enemy.extend({
     init: function(y) {
-        // TODO: set health
-        this._super(game.Enemy, 'init', [y, DEMENTOR_HEALTH, DEMENTOR_ATTACK]);
+        settings = {
+            image: 'dementor'
+        }
+        this._super(game.Enemy, 'init', [y, DEMENTOR_HEALTH, DEMENTOR_ATTACK, settings]);
 
         // max walking speed
         this.body.setMaxVelocity(1, 0);
@@ -272,7 +284,7 @@ game.DementorEnemy = game.Enemy.extend({
         // TODO: add the attack animation
         // TODO: add the takeDamage animation
         // TODO: add the die animation
-        // TODO: change to dementor image
+        // TODO: set the animation up correctly
         this.renderable.addAnimation("move", [4, 5, 6, 7]);
         this.renderable.addAnimation("stand", [0, 1, 2, 3]);
         this.renderable.setCurrentAnimation('stand');
@@ -293,8 +305,8 @@ game.DementorEnemy = game.Enemy.extend({
                 } else {
                     this.reachedEnd = true;
                 }
-            } else if (this.timer < 1500) {
-                // pause the enemy for 1.5 seconds
+            } else if (this.timer < 1000) {
+                // pause the enemy for 1 second
                 this.timer += dt;
             } else {
                 // resume movement
