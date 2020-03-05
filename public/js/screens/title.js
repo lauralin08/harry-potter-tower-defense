@@ -26,12 +26,6 @@ game.TitleScreen = me.ScreenObject.extend({
 
                 // font for the scrolling text
                 this.font = new me.BitmapFont(me.loader.getBinary('PressStart2P'), me.loader.getImage('PressStart2P'));
-
-                // a tween to animate the arrow
-                this.scrollertween = new me.Tween(this).to({scrollerpos: -2200 }, 10000).onComplete(this.scrollover.bind(this)).start();
-
-                this.scroller = "PLACEHOLDER TITLE SCREEN BASED ON MELONJS PLATFORMER TUTORIAL       "
-                this.scrollerpos = 1024;
             },
 
             // some callback for the tween objects
@@ -46,14 +40,13 @@ game.TitleScreen = me.ScreenObject.extend({
             },
 
             draw: function(renderer) {
-                this.font.draw(renderer, "CLICK OR PRESS ENTER TO PLAY", 1120, 960);
-                this.font.draw(renderer, this.scroller, this.scrollerpos, 1024);
+                // TODO: fix this rendering
+                this.font.draw(renderer, "A HARRY POTTER THEMED TOWER DEFENSE GAME", 635, 700);
+                this.font.draw(renderer, "CLICK OR PRESS ENTER TO PLAY", 765, 775);
+                // this.font.draw(renderer, "A HARRY POTTER THEMED TOWER DEFENSE GAME", 635, 1050);
+                // this.font.draw(renderer, "CLICK OR PRESS ENTER TO PLAY", 765, 1125);
             },
 
-            onDestroyEvent: function() {
-                // just in case
-                this.scrollertween.stop();
-            }
         })), 2);
 
         // change to play state on press Enter or click/tap

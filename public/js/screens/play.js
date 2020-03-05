@@ -1,4 +1,4 @@
-function generateEnemies(number, enemyType) {
+function generateEnemyType(number, enemyType) {
     for (var i = 0; i < number; i++) {
         var boardHeight = 16;
         // generate the starting tile
@@ -6,19 +6,93 @@ function generateEnemies(number, enemyType) {
         // convert the tile to a pixel coordinate
         yCoord = yCoord ? yCoord * 32 : 32;
         me.game.world.addChild(me.pool.pull(enemyType, yCoord));
+        // keep track of the number of enemies
+        game.data.enemies++;
     }
 }
 
 function generateEnemyWave(numGrindylows, numAcromantulas, numDementors) {
-    generateEnemies(numGrindylows, 'GrindylowEnemy');
-    generateEnemies(numAcromantulas, 'AcromantulaEnemy');
-    generateEnemies(numDementors, 'DementorEnemy');
+    generateEnemyType(numGrindylows, 'GrindylowEnemy');
+    generateEnemyType(numAcromantulas, 'AcromantulaEnemy');
+    generateEnemyType(numDementors, 'DementorEnemy');
+}
+
+function generateAllEnemies(numLevel) {
+    switch (numLevel) {
+        case 3:
+            numGrindylows = 5;
+            numAcromantulas = 3;
+            numDementors = 2;
+            break;
+        case 2:
+            numGrindylows = 5;
+            numAcromantulas = 3;
+            numDementors = 1;
+            break;
+        case 1:
+        default:
+            numGrindylows = 5;
+            numAcromantulas = 2;
+            numDementors = 1;
+    }
+    generateEnemyWave(numGrindylows, numAcromantulas, numDementors);
+    var x = 0;
+    console.log(`Wave ${x+1}`);
+    var intervalID = window.setInterval(function() {
+        generateEnemyWave(numGrindylows, numAcromantulas, numDementors);
+        if (++x === 9) {
+            window.clearInterval(intervalID);
+            game.data.allEnemiesDeployed = true;
+        }
+        console.log(`Wave ${x+1}`);
+        // increase acromantulas after the 4th wave
+        if (x === 3) {
+            numAcromantulas++;
+        }
+        // increase dementors after the 7th wave
+        if (x === 6) {
+            numDementors++;
+        }
+    }, 18000);
+}
+
+function waitForLevelClear(numLevel) {
+    var intervalID = window.setInterval(function() {
+        console.log(game.data.enemies);
+        let cleared = game.data.allEnemiesDeployed && game.data.enemies === 0;
+        console.log(cleared);
+        if (cleared) {
+            window.clearInterval(intervalID);
+            switch (numLevel) {
+                case 3:
+                    // TODO: set up win screen
+                    // game.state.set(me.state.GAME_END, new game.WinScreen());
+                    break;
+                case 2:
+                    game.state.set(me.state.PLAY, new game.Hogwarts());
+                    break;
+                case 1:
+                default:
+                    game.state.set(me.state.PLAY, new game.Gringotts());
+                }
+        }
+    }, 1000);
 }
 
 game.PlayScreen = me.ScreenObject.extend({
     /**
-     *  action to perform on state change
+     *  action to perform when leaving this screen (state change)
      */
+    onDestroyEvent: function() {
+        // remove the HUD from the game world
+        me.game.world.removeChild(this.HUD);
+
+        // stop the audio track
+        me.audio.stopTrack();
+    }
+});
+
+game.PrivetDrive = game.PlayScreen.extend({
     onResetEvent: function() {
         // play the audio track
         me.audio.playTrack('Curse Of The Ice Queen');
@@ -37,19 +111,46 @@ game.PlayScreen = me.ScreenObject.extend({
         this.HUD = new game.HUD.Container();
         me.game.world.addChild(this.HUD);
 
-        // randomly generate the enemy start position
-        // for the first wave, we'll do 5 grindylows, 2 acromantulas, and 1 dementor
-        generateEnemyWave(5, 2, 1);
-    },
+        // randomly generate enemies
+        generateAllEnemies(1);
+        waitForLevelClear(1);
+    }
+});
 
-    /**
-     *  action to perform when leaving this screen (state change)
-     */
-    onDestroyEvent: function() {
-        // remove the HUD from the game world
-        me.game.world.removeChild(this.HUD);
+game.Gringotts = game.PlayScreen.extend({
+    onResetEvent: function() {
+        // play the audio track
+        me.audio.playTrack('Curse Of The Ice Queen');
 
-        // stop the audio strack
-        me.audio.stopTrack();
+        // load a level
+        me.levelDirector.loadLevel('Gringotts');
+
+        // Add our HUD to the game world, add it last so that this is on top of the rest.
+        // Can also be forced by specifying a "Infinity" z value to the addChild function.
+        this.HUD = new game.HUD.Container();
+        me.game.world.addChild(this.HUD);
+
+        // randomly generate enemies
+        generateAllEnemies(2);
+        waitForLevelClear(2);
+    }
+});
+
+game.Hogwarts = game.PlayScreen.extend({
+    onResetEvent: function() {
+        // play the audio track
+        me.audio.playTrack('Curse Of The Ice Queen');
+
+        // // load a level
+        // me.levelDirector.loadLevel('Hogwarts');
+
+        // Add our HUD to the game world, add it last so that this is on top of the rest.
+        // Can also be forced by specifying a "Infinity" z value to the addChild function.
+        this.HUD = new game.HUD.Container();
+        me.game.world.addChild(this.HUD);
+
+        // randomly generate enemies
+        generateAllEnemies(3);
+        waitForLevelClear(3);
     }
 });

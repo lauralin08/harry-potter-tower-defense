@@ -4,7 +4,6 @@ var game = {
 
     // an object where to store game information
     data : {
-        waveNumber: 1,
         beans: 300,
         
         spellLv1Cost: 100,
@@ -21,7 +20,10 @@ var game = {
 
         lv1UpgradeDamage: 0,
         lv2UpgradeDamage: 5,
-        lv3UpgradeDamage: 10
+        lv3UpgradeDamage: 10,
+
+        enemies: 0,
+        allEnemiesDeployed: false,
     },
 
     // Run on page load.
@@ -46,7 +48,7 @@ var game = {
         me.state.set(me.state.MENU, new game.TitleScreen());
 
         // set the "Play/Ingame" Screen Object
-        me.state.set(me.state.PLAY, new game.PlayScreen());
+        me.state.set(me.state.PLAY, new game.PrivetDrive());
 
         // set a global fading transition for the screen
         me.state.transition("fade", "#FFFFFF", 250);
