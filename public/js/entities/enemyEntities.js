@@ -175,9 +175,9 @@ game.AcromantulaEnemy = game.Enemy.extend({
         // TODO: add the takeDamage animation
         // TODO: add the die animation
         // TODO: set the animation up correctly
-        this.renderable.addAnimation("move", [4, 5, 6, 7]);
-        this.renderable.addAnimation("stand", [0, 1, 2, 3]);
-        this.renderable.setCurrentAnimation('stand');
+        this.renderable.addAnimation("move", [6, 14, 22, 30]);
+        this.renderable.addAnimation("die", [0, 1, 2, 3, 4, 5, 6, 7]);
+        this.renderable.setCurrentAnimation('move');
     },
 
     update: function(dt) {
@@ -285,9 +285,9 @@ game.DementorEnemy = game.Enemy.extend({
         // TODO: add the takeDamage animation
         // TODO: add the die animation
         // TODO: set the animation up correctly
-        this.renderable.addAnimation("move", [4, 5, 6, 7]);
-        this.renderable.addAnimation("stand", [0, 1, 2, 3]);
-        this.renderable.setCurrentAnimation('stand');
+        this.renderable.addAnimation("move", [12, 11, 10, 9, 8]);
+        this.renderable.addAnimation("die", [0, 1, 2, 3]);
+        this.renderable.setCurrentAnimation('move');
     },
 
     update: function(dt) {

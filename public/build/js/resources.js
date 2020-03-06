@@ -67,7 +67,7 @@ game.resources = [
   {
       "name": "dementor",
       "type": "image",
-      "src": "data/img/sprite/dementor2.png"
+      "src": "data/img/sprite/dementor.png"
   },
   {
       "name": "gripe_run_right",
