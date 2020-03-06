@@ -110,9 +110,9 @@ game.resources = [
       "src": "data/fnt/PressStart2P.fnt"
   },
   {
-      "name": "Deer_Idle",
+      "name": "Patronus",
       "type": "image",
-      "src": "data/img/sprite/Deer_Idle.png"
+      "src": "data/img/sprite/Patronus.png"
   },
   {
       "name": "Deer_Run",

@@ -285,7 +285,7 @@ game.DementorEnemy = game.Enemy.extend({
         // TODO: add the takeDamage animation
         // TODO: add the die animation
         // TODO: set the animation up correctly
-        this.renderable.addAnimation("move", [12, 11, 10, 9, 8]);
+        this.renderable.addAnimation("move", [12, 11, 10, 9, 8, 7]);
         this.renderable.addAnimation("die", [0, 1, 2, 3]);
         this.renderable.setCurrentAnimation('move');
     },
