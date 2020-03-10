@@ -79,18 +79,19 @@ game.Spell = me.Entity.extend({
     	me.collision.check(this);
     },
 
+
     onCollision : function (response) {
 	if (response.b.body.collisionType === me.collision.types.ENEMY_OBJECT) {
 		// add the spell attack animation
 		var spellAttack = me.pool.pull("SpellAttack", 
-			this.pos.x + this.hWidth, 
-			this.pos.y + this.hHeight);
-		me.game.world.addChild(speallAttack);
+			this.renderable.pos.x, 
+			this.renderable.pos.y);
+		me.game.world.addChild(spellAttack);
 		me.game.world.removeChild(spellAttack);
 		// add the enemy attack animation
 		var enemyAttack = me.pool.pull("EnemyAttack", 
-			response.obj.pos.x + response.obj.hWidth, 
-			response.obj.pos.y + response.obj.hHeight);
+			response.b.pos.x, 
+			response.b.pos.y);
 		me.game.world.addChild(enemyAttack);
 		me.game.world.removeChild(enemyAttack);
 		
@@ -98,7 +99,7 @@ game.Spell = me.Entity.extend({
 		response.health -= this.attack;
 		this.health -= response.attackPower;
 		
-		// check for dealths
+		// check for deaths
 		if (this.health == 0) {
 			me.game.world.removeChild(this);
 		}

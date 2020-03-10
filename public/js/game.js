@@ -50,6 +50,9 @@ var game = {
         // set the "Play/Ingame" Screen Object
         me.state.set(me.state.PLAY, new game.PrivetDrive());
 
+	// set the gameover screen object
+	me.state.set(me.state.GAMEOVER, new game.LoserScreen());
+
         // set a global fading transition for the screen
         me.state.transition("fade", "#FFFFFF", 250);
         
@@ -63,8 +66,8 @@ var game = {
         me.pool.register("ProtegoDiabolicaSpell", game.ProtegoDiabolicaSpell);
         me.pool.register("PatronusCharmSpell", game.PatronusCharmSpell);
 	// add the attacks to the entity pool
-	//me.pool.register("EnemyAttack", game.EnemyAttack);
-	//me.pool.register("SpellAttack", game.SpellAttack);
+	me.pool.register("EnemyAttack", game.EnemyAttack);
+	me.pool.register("SpellAttack", game.SpellAttack);
 
         // enable the keyboard
         me.input.bindKey(me.input.KEY.LEFT, 'left');

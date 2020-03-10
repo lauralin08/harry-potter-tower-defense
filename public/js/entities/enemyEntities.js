@@ -56,11 +56,13 @@ game.Enemy = me.Entity.extend({
         this.timer = 0;
         this.deployed = true;
     },
+    
+    
     /**
      * Collision handler
     */
     onCollision: function (response, other) {
-        if (response.b.body.collisionType !== me.collision.types.WORLD_SHAPE) {
+        if (response.b.body.collisionType === me.collision.types.ACTION_OBJECT) {
             if(this.alive && (response.overlapV.x < 0)) {
                 this.renderable.flicker(750);
                 this.alive = false;
@@ -69,6 +71,7 @@ game.Enemy = me.Entity.extend({
         }
         // make all other objects solid
        return true;
+
     },
 
     draw: function(renderer) {
@@ -145,9 +148,10 @@ game.GrindylowEnemy = game.Enemy.extend({
                 onEnemyDeath(this, GRINDYLOW_ATTACK);
             } else if (this.reachedEnd) {
                 // TODO: game over... raise the dark mark!
-                onGameOver();
-            }
-        }
+                me.state.change(me.state.GAMEOVER);
+	      }		
+          }
+        
 
         // check & update movement
         this.body.update(dt);
@@ -272,7 +276,7 @@ game.AcromantulaEnemy = game.Enemy.extend({
                 onEnemyDeath(this, ACROMANTULA_ATTACK);
             } else if (this.reachedEnd) {
                 // TODO: game over... raise the dark mark!
-                onGameOver();
+                me.state.change(me.state.GAMEOVER);
             }
         }
 
@@ -344,7 +348,7 @@ game.DementorEnemy = game.Enemy.extend({
                 onEnemyDeath(this, DEMENTOR_ATTACK);
             } else if (this.reachedEnd) {
                 // TODO: game over... raise the dark mark!
-                onGameOver();
+                me.state.change(me.state.GAMEOVER);
             }
         }
 
