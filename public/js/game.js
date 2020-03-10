@@ -62,6 +62,9 @@ var game = {
         me.pool.register("ImperturbableCharmSpell", game.ImperturbableCharmSpell);
         me.pool.register("ProtegoDiabolicaSpell", game.ProtegoDiabolicaSpell);
         me.pool.register("PatronusCharmSpell", game.PatronusCharmSpell);
+	// add the attacks to the entity pool
+	//me.pool.register("EnemyAttack", game.EnemyAttack);
+	//me.pool.register("SpellAttack", game.SpellAttack);
 
         // enable the keyboard
         me.input.bindKey(me.input.KEY.LEFT, 'left');

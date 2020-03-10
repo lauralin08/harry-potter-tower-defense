@@ -158,6 +158,16 @@ game.resources = [
       "name": "Protego_Diabolica",
       "type": "audio",
       "src": "data/sfx/"
+  },
+  {
+      "name": "spellAttack",
+      "type": "image",
+      "src": "data/img/sprite/spellAttack.png"
+  },
+  {
+      "name": "enemyAttack",
+      "type": "image",
+      "src": "data/img/sprite/enemyAttack.png"
   }
 ];
 

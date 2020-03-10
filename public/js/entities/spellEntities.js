@@ -49,10 +49,62 @@ game.Spell = me.Entity.extend({
 
         this.upgradeLevel = 0;
         this.health = health;
+	this.maxHealth = health;
         this.attackPower = attackPower;
+	this.body.collisionType = me.collision.types.ACTION_OBJECT;
 
     },
 
+    draw: function(renderer) {
+	this._super(me.Entity, "draw", [renderer]);
+	this.drawHealthBar(renderer);
+    },
+
+    drawHealthBar: function(renderer) {
+	//draw black background
+	renderer.setColor("rgba(0,0,0,1)");
+	renderer.fillRect(-16, -25, 32, 5);
+
+	//draw purple health bar overlay
+	var remainingHealth = (this.health / this.maxHealth) * 32;
+	if (remainingHealth < 0) {
+		remainingHealth = 0;
+	}
+	
+	renderer.setColor("rgba(165, 55, 253, 1)");
+	renderer.fillRect(-16, -25, remainingHealth, 5);
+    },    
+             
+    update: function(dt) {
+    	me.collision.check(this);
+    },
+
+    onCollision : function (response) {
+	if (response.b.body.collisionType === me.collision.types.ENEMY_OBJECT) {
+		// add the spell attack animation
+		var spellAttack = me.pool.pull("SpellAttack", 
+			this.pos.x + this.hWidth, 
+			this.pos.y + this.hHeight);
+		me.game.world.addChild(speallAttack);
+		me.game.world.removeChild(spellAttack);
+		// add the enemy attack animation
+		var enemyAttack = me.pool.pull("EnemyAttack", 
+			response.obj.pos.x + response.obj.hWidth, 
+			response.obj.pos.y + response.obj.hHeight);
+		me.game.world.addChild(enemyAttack);
+		me.game.world.removeChild(enemyAttack);
+		
+		// decrease healths
+		response.health -= this.attack;
+		this.health -= response.attackPower;
+		
+		// check for dealths
+		if (this.health == 0) {
+			me.game.world.removeChild(this);
+		}
+		return true;
+	}
+    }
     // TODO: add the tower upgrade button
     
 });
@@ -77,6 +129,7 @@ game.ImperturbableCharmSpell = game.Spell.extend({
 
 	me.audio.play("Imperturbable");
     },
+  
 
     // TODO: add logic for casting spells from the spell tower
 });
@@ -101,6 +154,8 @@ game.ProtegoDiabolicaSpell = game.Spell.extend({
 	
 	me.audio.play("Protego_Diabolica");
     },
+
+    // TODO: add logic for casting spells from the spell tower
 
     // TODO: add logic for casting spells from the spell tower
 });

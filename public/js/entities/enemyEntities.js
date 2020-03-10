@@ -51,6 +51,7 @@ game.Enemy = me.Entity.extend({
         this.endY = (me.game.viewport.height / 2) + 240;
         this.reachedEnd = false;
         this.health = health;
+	this.maxHealth = health;
         this.attackPower = attackPower;
         this.timer = 0;
         this.deployed = true;
@@ -68,6 +69,27 @@ game.Enemy = me.Entity.extend({
         }
         // make all other objects solid
        return true;
+    },
+
+    draw: function(renderer) {
+	this._super(me.Entity, "draw", [renderer]);
+	this.drawHealthBar(renderer);
+    },
+
+    drawHealthBar: function(renderer) {
+	//draw black background
+	renderer.setColor("rgba(0,0,0,1)");
+	renderer.fillRect(-16, -25, 32, 5);
+
+	//draw green health bar overlay
+	var remainingHealth = (this.health / this.maxHealth) * 32;
+	console.log(remainingHealth);
+	if (remainingHealth < 0) {
+		remainingHealth = 0;
+	}
+
+	renderer.setColor("rgba(0,230,64,1)");
+	renderer.fillRect(-16, -25, remainingHealth, 5);
     }
 });
 
