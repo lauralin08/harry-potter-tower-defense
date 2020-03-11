@@ -43,6 +43,7 @@ game.TitleScreen = me.ScreenObject.extend({
                 // TODO: fix this rendering
                 this.font.draw(renderer, "A HARRY POTTER THEMED TOWER DEFENSE GAME", 635, 700);
                 this.font.draw(renderer, "CLICK OR PRESS ENTER TO PLAY", 765, 775);
+		this.font.draw(renderer, "PRESS L TO LEARN HOW TO PLAY", 765, 850);
                 // this.font.draw(renderer, "A HARRY POTTER THEMED TOWER DEFENSE GAME", 635, 1050);
                 // this.font.draw(renderer, "CLICK OR PRESS ENTER TO PLAY", 765, 1125);
             },
@@ -52,6 +53,8 @@ game.TitleScreen = me.ScreenObject.extend({
         // change to play state on press Enter or click/tap
         me.input.bindKey(me.input.KEY.ENTER, "enter", true);
         me.input.bindPointer(me.input.pointer.LEFT, me.input.KEY.ENTER);
+	// change to how to play state on press L
+	me.input.bindKey(me.input.KEY.L, "learn", true);
         this.handler = me.event.subscribe(me.event.KEYDOWN, function(action, keyCode, edge) {
             if (action === "enter") {
                 // play something on tap / enter
@@ -59,6 +62,11 @@ game.TitleScreen = me.ScreenObject.extend({
                 me.audio.play("cling");
                 me.state.change(me.state.PLAY);
             }
+
+	    if (action === "learn") {
+		me.audio.play("Lumos");
+		me.state.change(me.state.SETTINGS);
+	    }
         });
     },
 
@@ -68,6 +76,7 @@ game.TitleScreen = me.ScreenObject.extend({
     onDestroyEvent: function() {
         me.input.unbindKey(me.input.KEY.ENTER);
         me.input.unbindPointer(me.input.pointer.LEFT);
+	me.input.unbindKey(me.input.KEY.L);
         me.event.unsubscribe(this.handler);
     }
 });

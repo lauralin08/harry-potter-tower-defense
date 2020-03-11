@@ -10,19 +10,24 @@ game.resources = [
       "src": "data/sfx/"
   },
   {
-      "name": "jump",
-      "type": "audio",
-      "src": "data/sfx/"
-  },
-  {
-      "name": "stomp",
-      "type": "audio",
-      "src": "data/sfx/"
-  },
-  {
       "name": "title_screen",
       "type": "image",
       "src": "data/img/gui/title_screen.png"
+  },
+  {
+      "name": "Tutorial",
+      "type": "image",
+      "src": "data/img/gui/Tutorial.jpg"
+  },
+  {
+      "name": "Winner",
+      "type": "image",
+      "src": "data/img/gui/Winner.png"
+  },
+  {
+      "name": "DarkMark",
+      "type": "image",
+      "src": "data/img/gui/DarkMark.png"
   },
   {
       "name": "level1",
@@ -33,21 +38,6 @@ game.resources = [
       "name": "level1",
       "type": "json",
       "src": "data/img/map/level1.json"
-  },
-  {
-      "name": "grindylow_back",
-      "type": "image",
-      "src": "data/img/sprite/grindylow_back.png"
-  },
-  {
-      "name": "grindylow_front",
-      "type": "image",
-      "src": "data/img/sprite/grindylow_front.png"
-  },
-  {
-      "name": "grindylow_left",
-      "type": "image",
-      "src": "data/img/sprite/grindylow_left.png"
   },
   {
       "name": "grindylow_right",
@@ -68,21 +58,6 @@ game.resources = [
       "name": "dementor",
       "type": "image",
       "src": "data/img/sprite/dementor.png"
-  },
-  {
-      "name": "gripe_run_right",
-      "type": "image",
-      "src": "data/img/sprite/gripe_run_right.png"
-  },
-  {
-      "name": "spinning_coin_gold",
-      "type": "image",
-      "src": "data/img/sprite/spinning_coin_gold.png"
-  },
-  {
-      "name": "wheelie_right",
-      "type": "image",
-      "src": "data/img/sprite/wheelie_right.png"
   },
   {
       "name": "PressStart2P",
@@ -144,11 +119,6 @@ game.resources = [
       "type": "audio",
       "src": "data/sfx/"
   },
-//   {
-//       "name": "Expecto_Patronum_2",
-//       "type": "audio",
-//       "src": "data/sfx/Expecto_Patronum_2.ogg"
-//   },
   {
       "name": "Imperturbable",
       "type": "audio",
@@ -158,6 +128,31 @@ game.resources = [
       "name": "Protego_Diabolica",
       "type": "audio",
       "src": "data/sfx/"
+  },
+  {
+      "name": "Lumos",
+      "type": "audio",
+      "src": "data/sfx/"
+  },
+  {
+      "name": "Nox",
+      "type": "audio",
+      "src": "data/sfx/"
+  },
+  {
+      "name": "spellAttack",
+      "type": "image",
+      "src": "data/img/sprite/spellAttack.png"
+  },
+  {
+      "name": "enemyAttack",
+      "type": "image",
+      "src": "data/img/sprite/enemyAttack.png"
+  },
+  {
+      "name": "beans",
+      "type": "image",
+      "src": "data/img/sprite/beans.png"
   }
 ];
 

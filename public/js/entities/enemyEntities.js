@@ -11,7 +11,7 @@ function onEnemyDeath(enemy, attackPower) {
     if (enemy.deployed) {
         // remove this enemy from the total enemy count
         game.data.enemies--;
-
+	//TODO: add death animation
         me.game.world.addChild(new game.BertieBottsBean(enemy.pos.x, enemy.pos.y));
         me.game.world.removeChild(enemy);
         game.data.beans += attackPower;
@@ -19,10 +19,10 @@ function onEnemyDeath(enemy, attackPower) {
     }
 }
 
-function onGameOver(){
-    // TODO: raise the dark mark and move to the game over screen
-    // in terms of enemy entities, this probably means cleaning up all child elements?
-    // me.state.set(me.state.GAMEOVER, new game.LoseScreen());
+function onGameOver() {
+    // stop the enemy waves still being generated
+    game.data.gameOver = true;
+    me.state.change(me.state.GAMEOVER);
 }
 
 /**
@@ -51,15 +51,18 @@ game.Enemy = me.Entity.extend({
         this.endY = (me.game.viewport.height / 2) + 240;
         this.reachedEnd = false;
         this.health = health;
+	this.maxHealth = health;
         this.attackPower = attackPower;
         this.timer = 0;
         this.deployed = true;
     },
+    
+    
     /**
      * Collision handler
     */
     onCollision: function (response, other) {
-        if (response.b.body.collisionType !== me.collision.types.WORLD_SHAPE) {
+        if (response.b.body.collisionType === me.collision.types.ACTION_OBJECT) {
             if(this.alive && (response.overlapV.x < 0)) {
                 this.renderable.flicker(750);
                 this.alive = false;
@@ -68,6 +71,28 @@ game.Enemy = me.Entity.extend({
         }
         // make all other objects solid
        return true;
+
+    },
+
+    draw: function(renderer) {
+	this._super(me.Entity, "draw", [renderer]);
+	this.drawHealthBar(renderer);
+    },
+
+    drawHealthBar: function(renderer) {
+	//draw black background
+	renderer.setColor("rgba(0,0,0,1)");
+	renderer.fillRect(-16, -25, 32, 5);
+
+	//draw green health bar overlay
+	var remainingHealth = (this.health / this.maxHealth) * 32;
+	console.log(remainingHealth);
+	if (remainingHealth < 0) {
+		remainingHealth = 0;
+	}
+
+	renderer.setColor("rgba(0,230,64,1)");
+	renderer.fillRect(-16, -25, remainingHealth, 5);
     }
 });
 
@@ -122,10 +147,10 @@ game.GrindylowEnemy = game.Enemy.extend({
                 // drop BeanEntity and add attackPower to spell casting power
                 onEnemyDeath(this, GRINDYLOW_ATTACK);
             } else if (this.reachedEnd) {
-                // TODO: game over... raise the dark mark!
                 onGameOver();
-            }
-        }
+	      }		
+          }
+        
 
         // check & update movement
         this.body.update(dt);
@@ -249,7 +274,6 @@ game.AcromantulaEnemy = game.Enemy.extend({
                 // drop BeanEntity and add attackPower to spell casting power
                 onEnemyDeath(this, ACROMANTULA_ATTACK);
             } else if (this.reachedEnd) {
-                // TODO: game over... raise the dark mark!
                 onGameOver();
             }
         }
@@ -321,7 +345,6 @@ game.DementorEnemy = game.Enemy.extend({
                 // drop BeanEntity and add attackPower to spell casting power
                 onEnemyDeath(this, DEMENTOR_ATTACK);
             } else if (this.reachedEnd) {
-                // TODO: game over... raise the dark mark!
                 onGameOver();
             }
         }
