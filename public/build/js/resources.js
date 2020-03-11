@@ -148,6 +148,11 @@ game.resources = [
       "name": "enemyAttack",
       "type": "image",
       "src": "data/img/sprite/enemyAttack.png"
+  },
+  {
+      "name": "beans",
+      "type": "image",
+      "src": "data/img/sprite/beans.png"
   }
 ];
 
