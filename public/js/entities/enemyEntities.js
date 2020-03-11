@@ -11,7 +11,7 @@ function onEnemyDeath(enemy, attackPower) {
     if (enemy.deployed) {
         // remove this enemy from the total enemy count
         game.data.enemies--;
-
+	//TODO: add death animation
         me.game.world.addChild(new game.BertieBottsBean(enemy.pos.x, enemy.pos.y));
         me.game.world.removeChild(enemy);
         game.data.beans += attackPower;

@@ -53,6 +53,9 @@ var game = {
 	// set the gameover screen object
 	me.state.set(me.state.GAMEOVER, new game.LoserScreen());
 
+	// set the how to play screen object
+	me.state.set(me.state.SETTINGS, new game.LearnScreen());
+
         // set a global fading transition for the screen
         me.state.transition("fade", "#FFFFFF", 250);
         
