@@ -38,13 +38,16 @@ function generateAllEnemies(numLevel) {
     generateEnemyWave(numGrindylows, numAcromantulas, numDementors);
     var x = 0;
     console.log(`Wave ${x+1}`);
+    console.log(`Generating ${numGrindylows} grindylows, ${numAcromantulas} acromantulas, and ${numDementors} dementors`);
     var intervalID = window.setInterval(function() {
-        generateEnemyWave(numGrindylows, numAcromantulas, numDementors);
-        if (++x === 9) {
+        if (game.data.gameOver) {
+            window.clearInterval(intervalID);
+            return;
+        } else if (++x === 9) {
             window.clearInterval(intervalID);
             game.data.allEnemiesDeployed = true;
         }
-        console.log(`Wave ${x+1}`);
+        generateEnemyWave(numGrindylows, numAcromantulas, numDementors);
         // increase acromantulas after the 4th wave
         if (x === 3) {
             numAcromantulas++;
@@ -53,6 +56,8 @@ function generateAllEnemies(numLevel) {
         if (x === 6) {
             numDementors++;
         }
+        console.log(`Wave ${x+1}`);
+        console.log(`Generating ${numGrindylows} grindylows, ${numAcromantulas} acromantulas, and ${numDementors} dementors`);
     }, 18000);
 }
 

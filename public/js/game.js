@@ -24,6 +24,7 @@ var game = {
 
         enemies: 0,
         allEnemiesDeployed: false,
+        gameOver: false,
     },
 
     // Run on page load.
