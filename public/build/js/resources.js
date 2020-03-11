@@ -25,6 +25,11 @@ game.resources = [
       "src": "data/img/gui/title_screen.png"
   },
   {
+      "name": "DarkMark",
+      "type": "image",
+      "src": "data/img/gui/DarkMark.png"
+  },
+  {
       "name": "level1",
       "type": "image",
       "src": "data/img/map/level1.png"
@@ -158,6 +163,16 @@ game.resources = [
       "name": "Protego_Diabolica",
       "type": "audio",
       "src": "data/sfx/"
+  },
+  {
+      "name": "spellAttack",
+      "type": "image",
+      "src": "data/img/sprite/spellAttack.png"
+  },
+  {
+      "name": "enemyAttack",
+      "type": "image",
+      "src": "data/img/sprite/enemyAttack.png"
   }
 ];
 
