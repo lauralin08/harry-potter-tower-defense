@@ -20,6 +20,11 @@ game.resources = [
       "src": "data/img/gui/Tutorial.jpg"
   },
   {
+      "name": "Winner",
+      "type": "image",
+      "src": "data/img/gui/Winner.png"
+  },
+  {
       "name": "DarkMark",
       "type": "image",
       "src": "data/img/gui/DarkMark.png"
