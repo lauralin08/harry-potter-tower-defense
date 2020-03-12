@@ -11,7 +11,7 @@ game.LoserScreen = me.ScreenObject.extend({
 	var loserImage = new me.Sprite(0, 0, {
 		image: me.loader.getImage('DarkMark'),
 	});
-
+	me.game.viewport.reset(0, 0);
 	// position and scale to fit the viewport size
 	loserImage.anchorPoint.set(0, 0);
 	loserImage.scale(me.game.viewport.width / loserImage.width, me.game.viewport.height / loserImage.height);
@@ -25,25 +25,18 @@ game.LoserScreen = me.ScreenObject.extend({
 		init: function() {
 			this._super(me.Renderable, 'init', [0, 0, me.game.viewport.width, me.game.viewport.height]);
 
-			//font for the scrolling text
+			//font 
 			this.font = new me.BitmapFont(me.loader.getBinary('PressStart2P'), me.loader.getImage('PressStart2P'));
-		},
-
-		// some callback for the tween objects
-		scrollover: function() {
-			//reset to default value
-			this.scrollerpos = 1024;
-			this.scrollertween.to({ scrollerpos: -2200 }, 10000).onComplete(this.scrollover.bind(this)).start();
 		},
 
 		update: function(dt) {
 			return true;
 		},
 
-		draw: function(renderer) {
-			this.font.draw(renderer, "GAME OVER", 635, 700);
-			this.font.draw(renderer, "CLICK OR PRESS ENTER TO PLAY AGAIN", 635, 800);
-		},
+		//draw: function(renderer) {
+		//	this.font.draw(renderer, "GAME OVER", 2000, 2000);
+	//		this.font.draw(renderer, "CLICK OR PRESS ENTER TO PLAY AGAIN", 2000, 2200);
+	//	},
 
 	})), 2);
 

@@ -1,6 +1,6 @@
 // TODO: confirm health and attack values
 const IMPERTURBABLE_HEALTH = 20;
-const IMPERTURBABLE_ATTACK = 5;
+const IMPERTURBABLE_ATTACK = 0;
 const PROTEGO_HEALTH = 30;
 const PROTEGO_ATTACK = 10;
 const PATRONUS_HEALTH = 40;
@@ -77,35 +77,10 @@ game.Spell = me.Entity.extend({
              
     update: function(dt) {
     	me.collision.check(this);
+	return true;
     },
 
-
-    onCollision : function (response) {
-	if (response.b.body.collisionType === me.collision.types.ENEMY_OBJECT) {
-		// add the spell attack animation
-		var spellAttack = me.pool.pull("SpellAttack", 
-			this.renderable.pos.x, 
-			this.renderable.pos.y);
-		me.game.world.addChild(spellAttack);
-		me.game.world.removeChild(spellAttack);
-		// add the enemy attack animation
-		var enemyAttack = me.pool.pull("EnemyAttack", 
-			response.b.pos.x, 
-			response.b.pos.y);
-		me.game.world.addChild(enemyAttack);
-		me.game.world.removeChild(enemyAttack);
-		
-		// decrease healths
-		response.health -= this.attack;
-		this.health -= response.attackPower;
-		
-		// check for deaths
-		if (this.health == 0) {
-			me.game.world.removeChild(this);
-		}
-		return true;
-	}
-    }
+ 
     // TODO: add the tower upgrade button
     
 });
@@ -120,10 +95,8 @@ game.ImperturbableCharmSpell = game.Spell.extend({
 	}
         this._super(game.Spell, 'init', [x, y, IMPERTURBABLE_HEALTH, IMPERTURBABLE_ATTACK, settings]);
 
-        // TODO: add the idle animation
-        // TODO: add the cast animation
-        // TODO: add the deflect animation
-        // TODO: add the explode animation
+        // add the idle animation
+        // add the cast animation 
         this.renderable.addAnimation("idle", [0]);
         this.renderable.addAnimation("cast", [1, 2, 3, 4, 5, 6]);
         this.renderable.setCurrentAnimation("cast", "idle");
@@ -131,6 +104,21 @@ game.ImperturbableCharmSpell = game.Spell.extend({
 	me.audio.play("Imperturbable");
     },
   
+    onCollision : function (response, other) {
+	if (other.body.collisionType === me.collision.types.ENEMY_OBJECT) {
+		this.renderable.setCurrentAnimation("cast", "idle");
+		me.audio.play("Imperturbable");
+		// decrease healths
+		this.health -= response.b.attackPower;
+		
+		// check for deaths
+		if (this.health == 0) {
+			this.alive = false;
+			me.game.world.removeChild(this);
+		}
+	return true;
+	}
+    }
 
     // TODO: add logic for casting spells from the spell tower
 });
@@ -156,6 +144,21 @@ game.ProtegoDiabolicaSpell = game.Spell.extend({
 	me.audio.play("Protego_Diabolica");
     },
 
+    onCollision : function (response, other) {
+	if (other.body.collisionType === me.collision.types.ENEMY_OBJECT) {
+		this.renderable.setCurrentAnimation("cast", "idle");
+		me.audio.play("Protego_Diabolica");
+		// decrease health
+		this.health -= other.attackPower;
+		
+		// check for deaths
+		if (this.health == 0) {
+			this.alive = false;
+			me.game.world.removeChild(this);
+		}
+	return true;
+	}
+    }
     // TODO: add logic for casting spells from the spell tower
 
     // TODO: add logic for casting spells from the spell tower
@@ -183,5 +186,28 @@ game.PatronusCharmSpell = game.Spell.extend({
 	me.audio.play("Expecto_Patronum");
     },
 
+    onCollision : function (response, other) {
+	if (other.body.collisionType === me.collision.types.ENEMY_OBJECT) {
+		this.renderable.setCurrentAnimation("attack", "idle");
+		me.audio.play("Expecto_Patronum");
+		// decrease health
+		this.health -= other.attackPower;
+		
+		// check for deaths
+		if (this.health == 0) {
+			this.alive = false;
+			me.game.world.removeChild(this);
+		}
+	return true;
+	}
+    },
+
+    magicAttack: function() {
+	var settings = {
+		magicDamage: this.attackPower
+	}
+	this.newMagic = me.pool.pull("MagicAttack", this.pos.x - 8, this.pos.y - 8, settings);
+	me.game.world.addChild(this.newMagic, 2);
+    }
     // TODO: add logic for casting spells from the spell tower
 });

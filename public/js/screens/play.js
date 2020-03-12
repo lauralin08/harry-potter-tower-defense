@@ -94,6 +94,9 @@ game.PlayScreen = me.ScreenObject.extend({
 
         // stop the audio track
         me.audio.stopTrack();
+
+
+
     }
 });
 
