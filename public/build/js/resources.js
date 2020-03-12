@@ -17,7 +17,7 @@ game.resources = [
   {
       "name": "Tutorial",
       "type": "image",
-      "src": "data/img/gui/Tutorial.jpg"
+      "src": "data/img/gui/Tutorial-Recovered.png"
   },
   {
       "name": "Winner",
