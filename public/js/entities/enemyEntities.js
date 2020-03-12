@@ -108,9 +108,9 @@ game.GrindylowEnemy = game.Enemy.extend({
         // max walking speed
         this.body.setMaxVelocity(1, 0);
 
-        // TODO: add the attack animation
-        // TODO: add the takeDamage animation
-        // TODO: add the die animation
+        // add the attack animation
+        // add the takeDamage animation
+        // add the die animation
 
         this.renderable.addAnimation("move", [4, 5, 6, 7]);
         this.renderable.addAnimation("stand", [0, 1, 2, 3]);
@@ -164,7 +164,7 @@ game.GrindylowEnemy = game.Enemy.extend({
     },
     /**
      * Collision handler
-     * TODO: override this
+     * 
     */
     onCollision: function (response, other) {
         if (response.b.body.collisionType !== me.collision.types.WORLD_SHAPE) {

@@ -38,11 +38,11 @@ game.WinnerScreen = me.ScreenObject.extend({
 		update: function(dt) {
 			return true;
 		},
-
+/*
 		draw: function(renderer) {
 			this.font.draw(renderer, "VOLDEMORT AND HIS ARMY IS VANQUISHED", 635, 700);
 			this.font.draw(renderer, "CLICK OR PRESS ENTER TO PLAY AGAIN", 765, 775);
-		},
+		},*/
 	})), 2);
 
 		//change to play state on press Enter or click

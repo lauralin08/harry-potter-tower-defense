@@ -95,10 +95,8 @@ game.ImperturbableCharmSpell = game.Spell.extend({
 	}
         this._super(game.Spell, 'init', [x, y, IMPERTURBABLE_HEALTH, IMPERTURBABLE_ATTACK, settings]);
 
-        // TODO: add the idle animation
-        // TODO: add the cast animation
-        // TODO: add the deflect animation
-        // TODO: add the explode animation
+        // add the idle animation
+        // add the cast animation 
         this.renderable.addAnimation("idle", [0]);
         this.renderable.addAnimation("cast", [1, 2, 3, 4, 5, 6]);
         this.renderable.setCurrentAnimation("cast", "idle");
