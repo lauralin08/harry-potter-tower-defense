@@ -271,7 +271,8 @@ game.AcromantulaEnemy = game.Enemy.extend({
             this.body.force.x = 0;
             if (!this.alive) {
                 // drop BeanEntity and add attackPower to spell casting power
-                onEnemyDeath(this, ACROMANTULA_ATTACK);
+                this.renderable.setCurrentAnimation('die');
+		onEnemyDeath(this, ACROMANTULA_ATTACK);
             } else if (this.reachedEnd) {
                 onGameOver();
             }
@@ -342,6 +343,7 @@ game.DementorEnemy = game.Enemy.extend({
             this.body.force.x = 0;
             if (!this.alive) {
                 // drop BeanEntity and add attackPower to spell casting power
+		this.renderable.setCurrentAnimation('die');
                 onEnemyDeath(this, DEMENTOR_ATTACK);
             } else if (this.reachedEnd) {
                 onGameOver();
