@@ -21,33 +21,26 @@ game.TitleScreen = me.ScreenObject.extend({
         // add a new renderable component with the scrolling text
         me.game.world.addChild(new (me.Renderable.extend({
             // constructor
-            init: function() {
+            init : function() {
                 this._super(me.Renderable, 'init', [0, 0, me.game.viewport.width, me.game.viewport.height]);
 
                 // font for the scrolling text
                 this.font = new me.BitmapFont(me.loader.getBinary('PressStart2P'), me.loader.getImage('PressStart2P'));
             },
 
-            // some callback for the tween objects
-            scrollover: function() {
-                // reset to default value
-                this.scrollerpos = 1024;
-                this.scrollertween.to({ scrollerpos: -2200 }, 10000).onComplete(this.scrollover.bind(this)).start();
-            },
-
             update: function(dt) {
                 return true;
             },
-
+	/*
             draw: function(renderer) {
                 // TODO: fix this rendering
-                this.font.draw(renderer, "A HARRY POTTER THEMED TOWER DEFENSE GAME", 635, 700);
-                this.font.draw(renderer, "CLICK OR PRESS ENTER TO PLAY", 765, 775);
-		this.font.draw(renderer, "PRESS L TO LEARN HOW TO PLAY", 765, 850);
+                this.font.draw(renderer, "DEFEND THE WIZARDING WORLD OF HARRY POTTER", 2000, 1000);
+                this.font.draw(renderer, "CLICK OR PRESS ENTER TO PLAY", 2150, 1200);
+		this.font.draw(renderer, "PRESS L TO LEARN HOW TO PLAY", 2150, 1400);
                 // this.font.draw(renderer, "A HARRY POTTER THEMED TOWER DEFENSE GAME", 635, 1050);
                 // this.font.draw(renderer, "CLICK OR PRESS ENTER TO PLAY", 765, 1125);
             },
-
+	*/
         })), 2);
 
         // change to play state on press Enter or click/tap

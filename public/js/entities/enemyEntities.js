@@ -62,16 +62,15 @@ game.Enemy = me.Entity.extend({
      * Collision handler
     */
     onCollision: function (response, other) {
-        if (response.b.body.collisionType === me.collision.types.ACTION_OBJECT) {
-            if(this.alive && (response.overlapV.x < 0)) {
-                this.renderable.flicker(750);
-                this.alive = false;
-            }
-            return false;
-        }
-        // make all other objects solid
-       return true;
+        if (other.body.collisionType === me.collision.types.ACTION_OBJECT) {
+            	this.health -= other.attackPower;
 
+            return true;
+        }
+	if (other.body.collisionType === me.collision.types.PROJECTILE_OBJECT) {
+		this.health -= other.magicDamage;
+	    return true;
+	}
     },
 
     draw: function(renderer) {
@@ -109,9 +108,9 @@ game.GrindylowEnemy = game.Enemy.extend({
         // max walking speed
         this.body.setMaxVelocity(1, 0);
 
-        // TODO: add the attack animation
-        // TODO: add the takeDamage animation
-        // TODO: add the die animation
+        // add the attack animation
+        // add the takeDamage animation
+        // add the die animation
 
         this.renderable.addAnimation("move", [4, 5, 6, 7]);
         this.renderable.addAnimation("stand", [0, 1, 2, 3]);
@@ -165,7 +164,7 @@ game.GrindylowEnemy = game.Enemy.extend({
     },
     /**
      * Collision handler
-     * TODO: override this
+     * 
     */
     onCollision: function (response, other) {
         if (response.b.body.collisionType !== me.collision.types.WORLD_SHAPE) {
@@ -272,7 +271,8 @@ game.AcromantulaEnemy = game.Enemy.extend({
             this.body.force.x = 0;
             if (!this.alive) {
                 // drop BeanEntity and add attackPower to spell casting power
-                onEnemyDeath(this, ACROMANTULA_ATTACK);
+                this.renderable.setCurrentAnimation('die');
+		onEnemyDeath(this, ACROMANTULA_ATTACK);
             } else if (this.reachedEnd) {
                 onGameOver();
             }
@@ -343,6 +343,7 @@ game.DementorEnemy = game.Enemy.extend({
             this.body.force.x = 0;
             if (!this.alive) {
                 // drop BeanEntity and add attackPower to spell casting power
+		this.renderable.setCurrentAnimation('die');
                 onEnemyDeath(this, DEMENTOR_ATTACK);
             } else if (this.reachedEnd) {
                 onGameOver();
