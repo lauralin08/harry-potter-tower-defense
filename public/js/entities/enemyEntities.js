@@ -62,16 +62,15 @@ game.Enemy = me.Entity.extend({
      * Collision handler
     */
     onCollision: function (response, other) {
-        if (response.b.body.collisionType === me.collision.types.ACTION_OBJECT) {
-            if(this.alive && (response.overlapV.x < 0)) {
-                this.renderable.flicker(750);
-                this.alive = false;
-            }
-            return false;
-        }
-        // make all other objects solid
-       return true;
+        if (other.body.collisionType === me.collision.types.ACTION_OBJECT) {
+            	this.health -= other.attackPower;
 
+            return true;
+        }
+	if (other.body.collisionType === me.collision.types.PROJECTILE_OBJECT) {
+		this.health -= other.magicDamage;
+	    return true;
+	}
     },
 
     draw: function(renderer) {
