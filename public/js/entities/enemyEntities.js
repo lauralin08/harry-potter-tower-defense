@@ -11,7 +11,7 @@ function onEnemyDeath(enemy, attackPower) {
     if (enemy.deployed) {
         // remove this enemy from the total enemy count
         game.data.enemies--;
-
+	//TODO: add death animation
         me.game.world.addChild(new game.BertieBottsBean(enemy.pos.x, enemy.pos.y));
         me.game.world.removeChild(enemy);
         game.data.beans += attackPower;
@@ -19,10 +19,10 @@ function onEnemyDeath(enemy, attackPower) {
     }
 }
 
-function onGameOver(){
-    // TODO: raise the dark mark and move to the game over screen
-    // in terms of enemy entities, this probably means cleaning up all child elements?
-    // me.state.set(me.state.GAMEOVER, new game.LoseScreen());
+function onGameOver() {
+    // stop the enemy waves still being generated
+    game.data.gameOver = true;
+    me.state.change(me.state.GAMEOVER);
 }
 
 /**
@@ -147,8 +147,7 @@ game.GrindylowEnemy = game.Enemy.extend({
                 // drop BeanEntity and add attackPower to spell casting power
                 onEnemyDeath(this, GRINDYLOW_ATTACK);
             } else if (this.reachedEnd) {
-                // TODO: game over... raise the dark mark!
-                me.state.change(me.state.GAMEOVER);
+                onGameOver();
 	      }		
           }
         
@@ -275,8 +274,7 @@ game.AcromantulaEnemy = game.Enemy.extend({
                 // drop BeanEntity and add attackPower to spell casting power
                 onEnemyDeath(this, ACROMANTULA_ATTACK);
             } else if (this.reachedEnd) {
-                // TODO: game over... raise the dark mark!
-                me.state.change(me.state.GAMEOVER);
+                onGameOver();
             }
         }
 
@@ -347,8 +345,7 @@ game.DementorEnemy = game.Enemy.extend({
                 // drop BeanEntity and add attackPower to spell casting power
                 onEnemyDeath(this, DEMENTOR_ATTACK);
             } else if (this.reachedEnd) {
-                // TODO: game over... raise the dark mark!
-                me.state.change(me.state.GAMEOVER);
+                onGameOver();
             }
         }
 
