@@ -113,7 +113,7 @@ game.PatronusCharmSpellCaster = game.SpellCaster.extend({
       image: "Patronus"
     }
     this._super(game.SpellCaster, "init", [x, y, settings]);
-    this.renderable.addAnimation("idle", [0]);
+    this.renderable.addAnimation("idle", [34]);
     this.renderable.setCurrentAnimation("idle");
 
     this.startX = 384;
