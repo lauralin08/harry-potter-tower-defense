@@ -22233,7 +22233,6 @@
         * var basic      = renderer.createPattern(image, "no-repeat");
         */
        createPattern: function createPattern(image, repeat) {
-
          if (!me.Math.isPowerOfTwo(image.width) || !me.Math.isPowerOfTwo(image.height)) {
            var src = typeof image.src !== "undefined" ? image.src : image;
            throw new Error("[WebGL Renderer] " + src + " is not a POT texture " + "(" + image.width + "x" + image.height + ")");

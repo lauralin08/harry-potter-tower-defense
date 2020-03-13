@@ -36,9 +36,7 @@ game.TitleScreen = me.ScreenObject.extend({
                 // TODO: fix this rendering
                 this.font.draw(renderer, "DEFEND THE WIZARDING WORLD OF HARRY POTTER", 2000, 1000);
                 this.font.draw(renderer, "CLICK OR PRESS ENTER TO PLAY", 2150, 1200);
-		this.font.draw(renderer, "PRESS L TO LEARN HOW TO PLAY", 2150, 1400);
-                // this.font.draw(renderer, "A HARRY POTTER THEMED TOWER DEFENSE GAME", 635, 1050);
-                // this.font.draw(renderer, "CLICK OR PRESS ENTER TO PLAY", 765, 1125);
+		        this.font.draw(renderer, "PRESS L TO LEARN HOW TO PLAY", 2150, 1400);
             },
 	*/
         })), 2);
