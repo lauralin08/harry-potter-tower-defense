@@ -53,12 +53,14 @@ function generateAllEnemies(numLevel) {
   console.log(`Wave ${x+1}`);
   console.log(`Generating ${numGrindylows} grindylows, ${numAcromantulas} acromantulas, and ${numDementors} dementors`);
   var intervalID = window.setInterval(function() {
-    if (game.data.gameOver) {
+    if (game.data.gameOver || x > 1 && !game.data.waiting) {
       window.clearInterval(intervalID);
       return;
     } else if (++x === 9) {
       window.clearInterval(intervalID);
       game.data.allEnemiesDeployed = true;
+    } else if (x === 2) {
+      game.data.waiting = true;
     }
     generateEnemyWave(numGrindylows, numAcromantulas, numDementors);
     // increase acromantulas after the 4th wave
@@ -131,8 +133,7 @@ game.PrivetDrive = game.PlayScreen.extend({
     // reset the spell casting power
     game.data.beans = 300;
 
-    // TODO: figure out how to do this while still stopping the async function
-    // game.data.gameOver = false;
+    game.data.gameOver = false;
 
     // Add our HUD to the game world, add it last so that this is on top of the rest.
     // Can also be forced by specifying a "Infinity" z value to the addChild function.
@@ -155,8 +156,7 @@ game.Gringotts = game.PlayScreen.extend({
     // load a level
     me.levelDirector.loadLevel('Gringotts');
 
-    // TODO: figure out how to do this while still stopping the async function
-    // game.data.gameOver = false;
+    game.data.gameOver = false;
     
     // Add our HUD to the game world, add it last so that this is on top of the rest.
     // Can also be forced by specifying a "Infinity" z value to the addChild function.
@@ -179,9 +179,8 @@ game.Hogwarts = game.PlayScreen.extend({
     // load a level
     me.levelDirector.loadLevel('Hogwarts');
 
-    // TODO: figure out how to do this while still stopping the async function
-    // game.data.gameOver = false;
-    
+    game.data.gameOver = false;
+
     // Add our HUD to the game world, add it last so that this is on top of the rest.
     // Can also be forced by specifying a "Infinity" z value to the addChild function.
     this.HUD = new game.HUD.Container();

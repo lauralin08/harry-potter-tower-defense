@@ -23,8 +23,11 @@ function onEnemyDeath(enemy) {
 function onGameOver() {
   if (!game.data.gameOver) {
     me.state.change(me.state.GAMEOVER);
-    // stop the enemy waves still being generated
     game.data.gameOver = true;
+  }
+  // stop the enemy waves still being generated
+  if (game.data.waiting) {
+    game.data.waiting = false;
   }
 }
 
