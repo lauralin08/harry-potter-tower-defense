@@ -23,7 +23,7 @@ var game = {
 
     enemies: 0,
     allEnemiesDeployed: false,
-    gameOver: false,
+    gameOver: false
   },
 
   // Run on page load.
@@ -47,11 +47,20 @@ var game = {
     // set the "Menu/Title" Screen Object
     me.state.set(me.state.MENU, new game.TitleScreen());
 
-    // set the "Play/Ingame" Screen Object
+    // set the "Play/Level 1" Screen Object
     me.state.set(me.state.PLAY, new game.PrivetDrive());
+
+    // set the Level 2 screen object
+    me.state.set(me.state.USER + 0, new game.Gringotts());
+
+    // set the Level 3 screen object
+    me.state.set(me.state.USER + 1, new game.Hogwarts());
 
     // set the gameover screen object
     me.state.set(me.state.GAMEOVER, new game.LoserScreen());
+
+    // set the win screen object
+    me.state.set(me.state.GAME_END, new game.WinnerScreen());
 
     // set the how to play screen object
     me.state.set(me.state.SETTINGS, new game.LearnScreen());
@@ -72,8 +81,20 @@ var game = {
     // add the attacks to the entity pool
     me.pool.register("EnemyAttack", game.EnemyAttack, true);
     me.pool.register("SpellAttack", game.SpellAttack, true);
+    me.pool.register("MagicAttack", game.MagicAttack, true);
 
     // Display the menu title
     me.state.change(me.state.MENU);
   }
 };
+
+
+/* TODO:
+    1. change the damage done to Imperturbable spells (pause between damage)
+    2. consider changing the costs of spells due to difficulty
+    3. fix the snapToNearestTile function
+    4. play through the whole game
+    5. check each level and the win screen
+    6. add spell and attack animations
+    7. check on the patronus animation
+  */

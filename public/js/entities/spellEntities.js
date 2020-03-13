@@ -82,7 +82,7 @@ game.ImperturbableCharmSpell = game.Spell.extend({
       this.health -= response.b.attackPower;
       
       // check for deaths
-      if (this.health == 0) {
+      if (this.health <= 0) {
         this.alive = false;
         me.game.world.removeChild(this);
       }
@@ -118,7 +118,7 @@ game.ProtegoDiabolicaSpell = game.Spell.extend({
       this.health -= other.attackPower;
       
       // check for deaths
-      if (this.health == 0) {
+      if (this.health <= 0) {
         this.alive = false;
         me.game.world.removeChild(this);
       }
@@ -150,12 +150,14 @@ game.PatronusCharmSpell = game.Spell.extend({
   onCollision : function (response, other) {
     if (other.body.collisionType === me.collision.types.ENEMY_OBJECT) {
       this.renderable.setCurrentAnimation("attack", "idle");
+      this.magicAttack();
       me.audio.play("Expecto_Patronum");
+
       // decrease health
       this.health -= other.attackPower;
       
       // check for deaths
-      if (this.health == 0) {
+      if (this.health <= 0) {
         this.alive = false;
         me.game.world.removeChild(this);
       }

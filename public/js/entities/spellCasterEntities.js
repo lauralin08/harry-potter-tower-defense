@@ -1,10 +1,15 @@
 // TODO: check these values
-const IMPERTURBABLE_COST = 20;
-const PROTEGO_COST = 30;
-const PATRONUS_COST = 40;
+const IMPERTURBABLE_COST = 10;
+const PROTEGO_COST = 20;
+const PATRONUS_COST = 30;
 
 function getClosestSquareCoord(coord) {
-  return 32 - (coord % 32) + coord;
+  var remainder = coord % 32;
+  if (remainder >= 16) {
+    return coord + (32 - remainder);
+  } else {
+    return coord - remainder;
+  }
 }
 
 game.SpellCost = me.Renderable.extend({

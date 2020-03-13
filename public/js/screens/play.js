@@ -73,27 +73,26 @@ function generateAllEnemies(numLevel) {
     }
     console.log(`Wave ${x+1}`);
     console.log(`Generating ${numGrindylows} grindylows, ${numAcromantulas} acromantulas, and ${numDementors} dementors`);
-  }, 18000);
+  }, 15000);
 }
 
 function waitForLevelClear(numLevel) {
   var intervalID = window.setInterval(function() {
-    // console.log(game.data.enemies);
     let cleared = game.data.allEnemiesDeployed && game.data.enemies === 0;
-    // console.log(cleared);
     if (cleared) {
       window.clearInterval(intervalID);
       switch (numLevel) {
         case 3:
-          // TODO: set up win screen
-          // game.state.set(me.state.GAME_END, new game.WinScreen());
+          me.state.change(me.state.GAME_END);
           break;
         case 2:
-          game.state.set(me.state.PLAY, new game.Hogwarts());
+          console.log('Changing state');
+          me.state.change(me.state.USER + 1);
           break;
         case 1:
         default:
-          game.state.set(me.state.PLAY, new game.Gringotts());
+          console.log('Changing state');
+          me.state.change(me.state.USER + 0);
       }
     }
   }, 1000);
@@ -105,8 +104,7 @@ function generateSpellCastingTowers() {
   me.game.world.addChild(new game.PatronusCharmSpellCaster(384, 384), Infinity);
 }
 
-
-game.PlayScreen = me.ScreenObject.extend({
+game.PlayScreen = me.ScreenObject.extend({  
   /**
    *  action to perform when leaving this screen (state change)
    */
@@ -121,26 +119,27 @@ game.PlayScreen = me.ScreenObject.extend({
 
 game.PrivetDrive = game.PlayScreen.extend({
   onResetEvent: function() {
+    // load a level
+    me.levelDirector.loadLevel('PrivetDrive');
+    
     // play the audio track
     me.audio.playTrack('Curse Of The Ice Queen');
 
-    // load a level
-    me.levelDirector.loadLevel('PrivetDrive');
-
-    // reset the score
-    game.data.score = 0;
-
-    // reset the spell casting power
-    game.data.beans = 300;
-
     game.data.gameOver = false;
-
+    game.data.allEnemiesDeployed = false;
+    
     // Add our HUD to the game world, add it last so that this is on top of the rest.
     // Can also be forced by specifying a "Infinity" z value to the addChild function.
     this.HUD = new game.HUD.Container();
     me.game.world.addChild(this.HUD);
 
     generateSpellCastingTowers();
+
+    // reset the score
+    game.data.score = 0;
+
+    // reset the spell casting power
+    game.data.beans = 300;
 
     // randomly generate enemies
     generateAllEnemies(1);
@@ -150,13 +149,16 @@ game.PrivetDrive = game.PlayScreen.extend({
 
 game.Gringotts = game.PlayScreen.extend({
   onResetEvent: function() {
+    // load a level
+    // TODO: add the missing .png tileset sources for Gringotts.tmx
+    // me.levelDirector.loadLevel('Gringotts');
+    me.levelDirector.loadLevel('PrivetDrive');
+
     // play the audio track
     me.audio.playTrack('Curse Of The Ice Queen');
 
-    // load a level
-    me.levelDirector.loadLevel('Gringotts');
-
     game.data.gameOver = false;
+    game.data.allEnemiesDeployed = false;
     
     // Add our HUD to the game world, add it last so that this is on top of the rest.
     // Can also be forced by specifying a "Infinity" z value to the addChild function.
@@ -164,6 +166,9 @@ game.Gringotts = game.PlayScreen.extend({
     me.game.world.addChild(this.HUD);
 
     generateSpellCastingTowers();
+
+    // re-up the spell casting power
+    game.data.beans += 300;
 
     // randomly generate enemies
     generateAllEnemies(2);
@@ -173,20 +178,26 @@ game.Gringotts = game.PlayScreen.extend({
 
 game.Hogwarts = game.PlayScreen.extend({
   onResetEvent: function() {
+    // load a level
+    // TODO: add the missing .png tileset sources for Hogwarts.tmx
+    // me.levelDirector.loadLevel('Hogwarts');
+    me.levelDirector.loadLevel('PrivetDrive');
+
     // play the audio track
     me.audio.playTrack('Curse Of The Ice Queen');
 
-    // load a level
-    me.levelDirector.loadLevel('Hogwarts');
-
     game.data.gameOver = false;
-
+    game.data.allEnemiesDeployed = false;
+    
     // Add our HUD to the game world, add it last so that this is on top of the rest.
     // Can also be forced by specifying a "Infinity" z value to the addChild function.
     this.HUD = new game.HUD.Container();
     me.game.world.addChild(this.HUD);
 
     generateSpellCastingTowers();
+        
+    // re-up the spell casting power
+    game.data.beans += 300;
 
     // randomly generate enemies
     generateAllEnemies(3);

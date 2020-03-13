@@ -140,8 +140,8 @@ game.GrindylowEnemy = game.Enemy.extend({
             }
           }
         }
-      } else if (this.timer < 3000) {
-        // pause the enemy for 3 seconds
+      } else if (this.timer < 2000) {
+        // pause the enemy for 2 seconds
         this.timer += dt;
       } else {
         // resume movement
@@ -207,8 +207,8 @@ game.AcromantulaEnemy = game.Enemy.extend({
             }
           }
         }
-      } else if (this.timer < 2000) {
-        // pause the enemy for 2 second
+      } else if (this.timer < 1000) {
+        // pause the enemy for 1 second
         this.timer += dt;
       } else {
         // resume movement
@@ -274,8 +274,8 @@ game.DementorEnemy = game.Enemy.extend({
             }
           }
         }
-      } else if (this.timer < 1000) {
-        // pause the enemy for 1 second
+      } else if (this.timer < 500) {
+        // pause the enemy for half a second
         this.timer += dt;
       } else {
         // resume movement
