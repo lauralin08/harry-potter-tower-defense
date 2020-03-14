@@ -1,4 +1,5 @@
 const express = require('express');
+const port = process.env.PORT || 8080;
 const app = express();
 
 app.set('view engine', 'pug');
@@ -13,15 +14,15 @@ app.use(express.static('lib'));
 app.use(express.static('tasks'));
 
 app.get('/', (req, res) => {
-  res.render('play', { heading: 'Play \u2014 Harry Potter Tower Defense' });
+  res.render('play');
 });
 
 app.get('/about', (req, res) => {
-  res.render('about', { heading: 'About \u2014 Harry Potter Tower Defense' });
+  res.render('about');
 });
 
 app.get('*', (req, res) => {
-  res.render('404', { heading: '404' });
+  res.render('404');
 });
 
-app.listen(8080, () => console.log('Listening on port 8080...'));
+app.listen(port, () => console.log(`Listening on port ${port}...`));

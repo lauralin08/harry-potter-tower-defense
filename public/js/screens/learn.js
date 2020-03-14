@@ -18,16 +18,16 @@ game.LearnScreen = me.ScreenObject.extend({
 		//add to the world container
 		me.game.world.addChild(learnImage, 1);
 
-	//change to menu state on press Enter or click
-	me.input.bindKey(me.input.KEY.ENTER, "enter", true);
-	me.input.bindPointer(me.input.pointer.LEFT, me.input.KEY.ENTER);
-	this.handler = me.event.subscribe(me.event.KEYDOWN, function(action, keyCode, edge) {
-		if (action === "enter") {
-			me.audio.play("Nox");
-			me.state.change(me.state.MENU);
-		}
-	});
-},
+    //change to menu state on press Enter or click
+    me.input.bindKey(me.input.KEY.ENTER, "enter", true);
+    me.input.bindPointer(me.input.pointer.LEFT, me.input.KEY.ENTER);
+    this.handler = me.event.subscribe(me.event.KEYDOWN, function(action, keyCode, edge) {
+      if (action === "enter") {
+        me.audio.play("Nox");
+        me.state.change(me.state.MENU);
+      }
+    });
+  },
 
 	/**
 	 * action to perform when leaving this screen (state change)

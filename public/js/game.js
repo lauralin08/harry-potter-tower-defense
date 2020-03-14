@@ -23,13 +23,13 @@ var game = {
 
     enemies: 0,
     allEnemiesDeployed: false,
-    gameOver: false,
+    gameOver: false
   },
 
   // Run on page load.
   "onload" : function () {
     // Initialize the video.
-    if (!me.video.init(1024, 512, {wrapper : "screen", scale : "auto", scaleMethod : "fit"})) {
+    if (!me.video.init(1024, 512, {wrapper: "screen", scale: "auto", scaleMethod: "fit"})) {
         alert("Your browser does not support HTML5 canvas.");
         return;
     }
@@ -47,11 +47,20 @@ var game = {
     // set the "Menu/Title" Screen Object
     me.state.set(me.state.MENU, new game.TitleScreen());
 
-    // set the "Play/Ingame" Screen Object
+    // set the "Play/Level 1" Screen Object
     me.state.set(me.state.PLAY, new game.PrivetDrive());
+
+    // set the Level 2 screen object
+    me.state.set(me.state.USER + 0, new game.Gringotts());
+
+    // set the Level 3 screen object
+    me.state.set(me.state.USER + 1, new game.Hogwarts());
 
     // set the gameover screen object
     me.state.set(me.state.GAMEOVER, new game.LoserScreen());
+
+    // set the win screen object
+    me.state.set(me.state.GAME_END, new game.WinnerScreen());
 
     // set the how to play screen object
     me.state.set(me.state.SETTINGS, new game.LearnScreen());
@@ -72,6 +81,7 @@ var game = {
     // add the attacks to the entity pool
     me.pool.register("EnemyAttack", game.EnemyAttack, true);
     me.pool.register("SpellAttack", game.SpellAttack, true);
+    me.pool.register("MagicAttack", game.MagicAttack, true);
 
     // Display the menu title
     me.state.change(me.state.MENU);

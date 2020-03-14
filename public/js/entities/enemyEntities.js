@@ -35,7 +35,7 @@ function onGameOver() {
  * A basic enemy entity
  */
 game.Enemy = me.Entity.extend({
-  init: function(y, health, attackPower, settings) {
+  init: function(y, numLevel, health, attackPower, settings) {
     settings.width = 32;
     settings.height = 32;
     settings.framewidth = 32;
@@ -55,8 +55,18 @@ game.Enemy = me.Entity.extend({
     this.alive = true;
 
     // set remaining properties
-    this.endX = 464;
-    this.endY = 512;
+    switch (numLevel) {
+      case 3:
+        this.endX = 464;
+        break;
+      case 2:
+        this.endX = 528;
+        break;
+      case 1:
+      default:
+        this.endX = 464;
+    }
+    // this.endY = 512;
     this.reachedEnd = false;
     this.health = health;
     this.maxHealth = health;
@@ -109,11 +119,11 @@ game.Enemy = me.Entity.extend({
  * Grindylow Entity
  */
 game.GrindylowEnemy = game.Enemy.extend({
-  init: function(y) {
+  init: function(y, numLevel) {
     var settings = {
         image: 'grindylow_right'
     };
-    this._super(game.Enemy, 'init', [y, GRINDYLOW_HEALTH, GRINDYLOW_ATTACK, settings]);
+    this._super(game.Enemy, 'init', [y, numLevel, GRINDYLOW_HEALTH, GRINDYLOW_ATTACK, settings]);
 
     // max walking speed
     this.body.setMaxVelocity(1, 0);
@@ -140,8 +150,8 @@ game.GrindylowEnemy = game.Enemy.extend({
             }
           }
         }
-      } else if (this.timer < 3000) {
-        // pause the enemy for 3 seconds
+      } else if (this.timer < 2000) {
+        // pause the enemy for 2 seconds
         this.timer += dt;
       } else {
         // resume movement
@@ -173,11 +183,11 @@ game.GrindylowEnemy = game.Enemy.extend({
  * Acromantula Entity
  */
 game.AcromantulaEnemy = game.Enemy.extend({
-  init: function(y) {
+  init: function(y, numLevel) {
     var settings = {
         image: 'acromantula'
     };
-    this._super(game.Enemy, 'init', [y, ACROMANTULA_HEALTH, ACROMANTULA_ATTACK, settings]);
+    this._super(game.Enemy, 'init', [y, numLevel, ACROMANTULA_HEALTH, ACROMANTULA_ATTACK, settings]);
 
     // max walking speed
     // TODO: allow y-axis movement
@@ -207,8 +217,8 @@ game.AcromantulaEnemy = game.Enemy.extend({
             }
           }
         }
-      } else if (this.timer < 2000) {
-        // pause the enemy for 2 second
+      } else if (this.timer < 1000) {
+        // pause the enemy for 1 second
         this.timer += dt;
       } else {
         // resume movement
@@ -241,11 +251,11 @@ game.AcromantulaEnemy = game.Enemy.extend({
  * Dementor Entity
  */
 game.DementorEnemy = game.Enemy.extend({
-  init: function(y) {
+  init: function(y, numLevel) {
     var settings = {
         image: 'dementor'
     };
-    this._super(game.Enemy, 'init', [y, DEMENTOR_HEALTH, DEMENTOR_ATTACK, settings]);
+    this._super(game.Enemy, 'init', [y, numLevel, DEMENTOR_HEALTH, DEMENTOR_ATTACK, settings]);
 
     // max walking speed
     // TODO: allow up, down, and diagonal movement
@@ -274,8 +284,8 @@ game.DementorEnemy = game.Enemy.extend({
             }
           }
         }
-      } else if (this.timer < 1000) {
-        // pause the enemy for 1 second
+      } else if (this.timer < 500) {
+        // pause the enemy for half a second
         this.timer += dt;
       } else {
         // resume movement

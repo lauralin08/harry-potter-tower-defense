@@ -2,7 +2,6 @@
 <map version="1.2" tiledversion="1.3.2" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="32" height="16" tilewidth="32" tileheight="32" infinite="0" nextlayerid="9" nextobjectid="1">
  <tileset firstgid="1" source="level2_1.tsx"/>
  <tileset firstgid="9126" source="level1.tsx"/>
- <tileset firstgid="14502" source="PC Computer - RPG Maker MV - Inside-rev.tsx"/>
  <tileset firstgid="17697" source="TileD.tsx"/>
  <tileset firstgid="17953" source="level2_2.tsx"/>
  <layer id="8" name="Tile Layer 5" width="32" height="16">
