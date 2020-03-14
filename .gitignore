@@ -108,3 +108,5 @@ dist
 
 # Python virtual env
 venv/
+
+build/*.js

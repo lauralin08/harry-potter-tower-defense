@@ -4,7 +4,7 @@
   "description": "The result of this project will be a Harry Potter -themed, 2D, single-player HTML5 Tower\r Defense game. The game should appeal to both newcomers and returning fans of strategy\r games, tower defense games, and the Harry Potter series alike.",
   "main": "main.js",
   "scripts": {
-    "start": "grunt serve",
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
