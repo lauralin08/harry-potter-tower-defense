@@ -75,6 +75,11 @@ game.resources = [
       "src": "data/map/Gringotts.tmx"
   },
   {
+      "name": "Hogwarts",
+      "type": "tmx",
+      "src": "data/map/Hogwarts.tmx"
+  },
+  {
       "name": "level1",
       "type": "tsx",
       "src": "data/map/level1.tsx"
@@ -153,6 +158,76 @@ game.resources = [
       "name": "beans",
       "type": "image",
       "src": "data/img/sprite/beans.png"
+  },
+  {
+      "name": "castle_tileset_part3",
+      "type": "image",
+      "src": "data/img/map/castle_tileset_part3.png"
+  },
+  {
+      "name": "castle_tileset_part3",
+      "type": "tsx",
+      "src": "data/map/castle_tileset_part3.tsx"
+  },
+  {
+      "name": "chikyuu_16_edge",
+      "type": "image",
+      "src": "data/img/map/chikyuu_16_edge.png"
+  },
+  {
+      "name": "chikyuu_16_edge",
+      "type": "tsx",
+      "src": "data/map/chikyuu_16_edge.tsx"
+  },
+  {
+    "name": "level2_1",
+    "type": "image",
+    "src": "data/img/map/level2_1.png"
+  },
+  {
+      "name": "level2_1",
+      "type": "tsx",
+      "src": "data/map/level2_1.tsx"
+  },
+  {
+    "name": "level2_2",
+    "type": "image",
+    "src": "data/img/map/level2_2.png"
+  },
+  {
+      "name": "level2_2",
+      "type": "tsx",
+      "src": "data/map/level2_2.tsx"
+  },
+  {
+    "name": "level3",
+    "type": "image",
+    "src": "data/img/map/level3.png"
+  },
+  {
+      "name": "level3",
+      "type": "tsx",
+      "src": "data/map/level3.tsx"
+  },
+  {
+    "name": "level3_2",
+    "type": "image",
+    "src": "data/img/map/level3_2.png"
+  },
+  {
+      "name": "level3_2",
+      "type": "tsx",
+      "src": "data/map/level3_2.tsx"
+  },
+  {
+    "name": "TileD",
+    "type": "image",
+    "src": "data/img/map/TileD.png"
+  },
+  {
+      "name": "TileD",
+      "type": "tsx",
+      "src": "data/map/TileD.tsx"
   }
 ];
 

@@ -34,10 +34,24 @@ game.SpellCost = me.Renderable.extend({
 });
 
 game.SpellCaster = me.DraggableEntity.extend({
-  init: function (x, y, settings) {
+  init: function (x, y, numLevel, settings) {
     // call the super constructor
     this._super(me.DraggableEntity, "init", [x, y, settings]);
 
+    this.startX = x;
+    this.startY = y;
+
+    switch (numLevel) {
+      case 3:
+        this.smallestX = 432;
+        break;
+      case 2:
+        this.smallestX = 528;
+        break;
+      case 1:
+      default:
+        this.smallestX = 432;
+    }
     // do not allow any collisions
     this.body.setCollisionMask(me.collision.types.NO_OBJECT);
   },
@@ -57,25 +71,23 @@ game.SpellCaster = me.DraggableEntity.extend({
 });
 
 game.ImperturbableCharmSpellCaster = game.SpellCaster.extend({
-  init: function (x, y) {
+  init: function (x, y, numLevel) {
     var settings = {
       height: 32,
       width: 32,
       image: "imperturbable"
     }
-    this._super(game.SpellCaster, "init", [x, y, settings]);
+    this._super(game.SpellCaster, "init", [x, y, numLevel, settings]);
     this.renderable.addAnimation("idle", [0]);
     this.renderable.setCurrentAnimation("idle");
 
-    this.startX = 192;
-    this.startY = 384;
     this.spellCost = IMPERTURBABLE_COST;
     me.game.world.addChild(new game.SpellCost(this.startX, this.startY, this.spellCost), Infinity);
   },
 
   dragEnd: function (e) {
     this._super(game.SpellCaster, "dragEnd", [e]);
-    if (game.data.beans >= IMPERTURBABLE_COST) {
+    if (game.data.beans >= IMPERTURBABLE_COST && this.castX >= this.smallestX) {
       // TODO: make sure there isn't already a spell tower here
       me.game.world.addChild(me.pool.pull("ImperturbableCharmSpell", this.castX, this.castY), Infinity);
       game.data.beans -= IMPERTURBABLE_COST;
@@ -84,25 +96,23 @@ game.ImperturbableCharmSpellCaster = game.SpellCaster.extend({
 });
 
 game.ProtegoDiabolicaSpellCaster = game.SpellCaster.extend({
-  init: function (x, y) {
+  init: function (x, y, numLevel) {
     var settings = {
       height: 32,
       width: 32,
       image: "Protego_Diabolica"
     }
-    this._super(game.SpellCaster, "init", [x, y, settings]);
+    this._super(game.SpellCaster, "init", [x, y, numLevel, settings]);
     this.renderable.addAnimation("idle", [0]);
     this.renderable.setCurrentAnimation("idle");
 
-    this.startX = 288;
-    this.startY = 384;
     this.spellCost = PROTEGO_COST;
     me.game.world.addChild(new game.SpellCost(this.startX, this.startY, this.spellCost), Infinity);
   },
 
   dragEnd: function (e) {
     this._super(game.SpellCaster, "dragEnd", [e]);
-    if (game.data.beans >= PROTEGO_COST) {
+    if (game.data.beans >= PROTEGO_COST && this.castX >= this.smallestX) {
       // TODO: make sure there isn't already a spell tower here
       me.game.world.addChild(me.pool.pull("ProtegoDiabolicaSpell", this.castX, this.castY), Infinity);
       game.data.beans -= PROTEGO_COST;
@@ -111,25 +121,23 @@ game.ProtegoDiabolicaSpellCaster = game.SpellCaster.extend({
 });
 
 game.PatronusCharmSpellCaster = game.SpellCaster.extend({
-  init: function (x, y) {
+  init: function (x, y, numLevel) {
     var settings = {
       height: 32,
       width: 32,
       image: "Patronus"
     }
-    this._super(game.SpellCaster, "init", [x, y, settings]);
+    this._super(game.SpellCaster, "init", [x, y, numLevel, settings]);
     this.renderable.addAnimation("idle", [34]);
     this.renderable.setCurrentAnimation("idle");
 
-    this.startX = 384;
-    this.startY = 384;
     this.spellCost = PATRONUS_COST;
     me.game.world.addChild(new game.SpellCost(this.startX, this.startY, this.spellCost), Infinity);
   },
 
   dragEnd: function (e) {
     this._super(game.SpellCaster, "dragEnd", [e]);
-    if (game.data.beans >= PATRONUS_COST) {
+    if (game.data.beans >= PATRONUS_COST && this.castX >= this.smallestX) {
       // TODO: make sure there isn't already a spell tower here
       me.game.world.addChild(me.pool.pull("PatronusCharmSpell", this.castX, this.castY), Infinity);
       game.data.beans -= PATRONUS_COST;

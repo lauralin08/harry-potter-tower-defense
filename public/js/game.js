@@ -29,7 +29,7 @@ var game = {
   // Run on page load.
   "onload" : function () {
     // Initialize the video.
-    if (!me.video.init(1024, 512, {wrapper : "screen", scale : "auto", scaleMethod : "fit"})) {
+    if (!me.video.init(1024, 512, {wrapper: "screen", scale: "auto", scaleMethod: "fit"})) {
         alert("Your browser does not support HTML5 canvas.");
         return;
     }
@@ -91,10 +91,7 @@ var game = {
 
 /* TODO:
     1. change the damage done to Imperturbable spells (pause between damage)
-    2. consider changing the costs of spells due to difficulty
-    3. fix the snapToNearestTile function
-    4. play through the whole game
-    5. check each level and the win screen
-    6. add spell and attack animations
-    7. check on the patronus animation
+    2. check each level and the win screen
+    3. add spell and attack animations
+    4. check on the patronus animation
   */
