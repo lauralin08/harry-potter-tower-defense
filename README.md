@@ -33,11 +33,22 @@ Then run the following command:
 
 Then navigate to [http://localhost:8080](http://localhost:8080).
 
+## To develop the game locally on a server that restarts with each change
+
+You will need the Grunt CLI for this.
+
+From the main directory:
+- `npm install -g grunt-cli`
+
+Then run the following command:
+- `grunt serve`
+
+Then navigate to [http://localhost:8080](http://localhost:8080). You can also append
+`#debug` to the url to view the game in debug mode.
+
 For more information, check out the [boilerplate](https://github.com/melonjs/boilerplate).
 
 ## In progress
-- Units & AI
-- Game engine
 - Game balance
-- Title, Win, and Lose screens
 - Scoring
+- Miscellaneous
