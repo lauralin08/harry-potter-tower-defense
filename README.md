@@ -32,12 +32,17 @@ Then run the following command:
 - `npm start`
 
 Then navigate to [http://localhost:8080](http://localhost:8080).
+After making any changes to the code, the server must be restarted for the
+changes to take effect.
 
 ## To develop the game locally on a server that restarts with each change
 
 You will need the Grunt CLI for this.
 
 From the main directory:
+
+First install any necessary dependencies:
+- `npm install`
 - `npm install -g grunt-cli`
 
 Then run the following command:

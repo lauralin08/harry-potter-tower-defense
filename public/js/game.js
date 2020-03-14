@@ -91,7 +91,7 @@ var game = {
 
 /* TODO:
     1. change the damage done to Imperturbable spells (pause between damage)
-    2. check each level and the win screen
-    3. add spell and attack animations
-    4. check on the patronus animation
+    2. add spell and attack animations
+    3. check on the patronus animation
   */
+ 
