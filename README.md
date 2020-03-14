@@ -1,10 +1,11 @@
 # Harry Potter Tower Defense Game
 
-The result of this project will be a Harry Potter -themed, 2D, single-player HTML5 Tower
-Defense game. The game should appeal to both newcomers and returning fans of strategy
+This is the first version of a Harry Potter -themed, 2D, single-player HTML5 Tower
+Defense game. The game will appeal to both newcomers and returning fans of strategy
 games, tower defense games, and the Harry Potter series alike.
 
-The project is currently in progress and will be finished in March 2020.
+The project was created by Samantha Schrock and Laura Lin for their Computer Science
+Capstone Project for Oregon State University.
 
 Resources:
 - [melonJS](http://www.melonjs.org/)
@@ -17,6 +18,8 @@ Resources:
 - [Express](https://expressjs.com/)
 - [Pug](https://pugjs.org/api/getting-started.html)
 - [freeCodeCamp](https://www.freecodecamp.org/news/)
+
+# [Play the game!](https://defend-the-wizarding-world.herokuapp.com/)
 
 ## To run the game locally
 
@@ -57,3 +60,4 @@ For more information, check out the [boilerplate](https://github.com/melonjs/boi
 - Game balance
 - Scoring
 - Miscellaneous
+  - refine spells and attacks

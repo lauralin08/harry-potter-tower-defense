@@ -79,8 +79,7 @@ game.ImperturbableCharmSpell = game.Spell.extend({
       this.renderable.setCurrentAnimation("cast", "idle");
       me.audio.play("Imperturbable");
       // decrease healths
-      this.health -= response.b.attackPower;
-      
+      this.health -= response.b.attackPower / 100;
       // check for deaths
       if (this.health <= 0) {
         this.alive = false;

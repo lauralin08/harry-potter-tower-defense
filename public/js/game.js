@@ -87,11 +87,3 @@ var game = {
     me.state.change(me.state.MENU);
   }
 };
-
-
-/* TODO:
-    1. change the damage done to Imperturbable spells (pause between damage)
-    2. add spell and attack animations
-    3. check on the patronus animation
-  */
- 
